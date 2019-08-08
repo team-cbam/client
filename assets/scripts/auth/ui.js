@@ -123,10 +123,5 @@ module.exports = {
   signOutFailure,
   signedOut,
   signedIn,
-  showSignUp,
-<<<<<<< HEAD
-  signedIn
-=======
-  showSignIn
->>>>>>> Rework auth html
+  showSignUp
 }

@@ -1,4 +1,4 @@
-const showEventsTemplate = require('../templates/event-listing.handlebars')
+const showEventsTemplate = require('../templates/handlebars/event-listing.handlebars')
 
 const getEventsSuccess = (data) => {
   const showEventsHtml = showEventsTemplate({ events: data.events })
