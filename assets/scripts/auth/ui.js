@@ -19,6 +19,13 @@ const signedOut = () => {
   $('.hidden').hide()
   $('.signed-out').show()
   $('form').trigger('reset')
+  $('.sign-up-screen').hide()
+}
+
+const showSignUp = () => {
+  $('.sign-up-screen').show()
+  $('.sign-in-screen').hide()
+
 }
 
 const signUpSuccess = data => {
@@ -110,5 +117,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   signedOut,
+  signedIn,
+  showSignUp,
   signedIn
 }
