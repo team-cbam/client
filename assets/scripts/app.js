@@ -12,4 +12,5 @@ $(() => {
   authUi.signedOut()
   authEvents.addHandlers()
   shingdigsEvents.addHandlers()
+  $
 })
