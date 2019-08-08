@@ -25,7 +25,6 @@ const signedOut = () => {
 const showSignUp = () => {
   $('.sign-up-screen').show()
   $('.sign-in-screen').hide()
-
 }
 
 const showSignIn = () => {
@@ -123,5 +122,6 @@ module.exports = {
   signOutFailure,
   signedOut,
   signedIn,
-  showSignUp
+  showSignUp,
+  showSignIn
 }
