@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Eat Up</h1>
+      <h1>Eat Up!</h1>
       <div class="row">
       <section class="container all-events col-8 p-0">
       </section>
@@ -20,11 +20,11 @@
           <div class="row">
             <h1>Welcome!</h1>
           </div>
-          <div class="row">
-            <div class="auth-message"></div>
+          <div class="row justify-content-end">
+            <div class="auth-message col-6 col-lg-3"></div>
           </div>
-          <div class="row">
-          <div class="sign-in-screen signed-out justify-content-center flex-column">
+          <div class="row justify-content-end">
+          <div class="sign-in-screen p-4 signed-out justify-content-center flex-column col-6 col-lg-3">
             <h4 class="p-2">Sign In</h4>
             <form id="sign-in" class="p-2">
               <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
@@ -33,7 +33,7 @@
             </form>
             <a class='sign-up-link' href='#'>New to Eat up? Create an account here.</a>
           </div>
-          <div class="sign-up-screen p-4 signed-out justify-content-center flex-column">
+          <div class="sign-up-screen p-4 signed-out justify-content-center flex-column col-6 col-lg-3">
             <h4 class="p-2">Sign Up</h4>
             <form id="sign-up" class="p-2 justify-content-center flex-column">
               <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
@@ -78,7 +78,6 @@
         </div>
 
       </section>
-    </div>
 
       <section>
         <div class='main-events-screen' id='all-events'>
