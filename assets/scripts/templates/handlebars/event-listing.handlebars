@@ -1,0 +1,16 @@
+{{#each events as |event|}}
+  <div class="container handlebar"
+      <div class="card bg-light mb-3" style="max-width: 20rem;">
+        <div class="card-header"><h2> {{event.name}}</h2></div>
+        <div class="card-body">
+          <h4 class="card-title"> {{event.name}}
+          </h4>
+          <p class="card-text">
+                      <b>Date:</b> {{event.date}}<br>
+                      <b>Location:</b> {{event.location}}<br>
+                      <details>Event ID:</b> {{plant.id}}</details></p>
+        </div>
+        <button class= "btn btn-danger delete-event" data-id="{{event.id}}">Delete Event </button>
+      </section>
+{{/each}}
+</div>
