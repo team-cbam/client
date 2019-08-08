@@ -12,6 +12,50 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Hey this is my branch</h1>
+      <h1>Eat Up</h1>
+      <section class="auth">
+        <div class="row justify-content-end">
+          <h1 class="col-lg-6 m-3">Camp Roster</h1>
+        </div>
+        <div class="row justify-content-end">
+          <div class="auth-message col-lg-6"></div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="sign-in-screen p-4 signed-out justify-content-center flex-column col-6 col-lg-3">
+            <h4 class="p-2">Sign In</h4>
+            <form id="sign-in" class="p-2">
+              <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
+              <input class="form-control" type="password" placeholder="Password" name="credentials[password]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+          </div>
+          <div class="sign-up-screen p-4 signed-out justify-content-center flex-column col-6 col-lg-3">
+            <h4 class="p-2">Sign Up</h4>
+            <form id="sign-up" class="p-2 justify-content-center flex-column">
+              <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
+              <input class="form-control" type="password" placeholder="Password" name="credentials[password]">
+              <input class="form-control" type="password" placeholder="Confirm Password" name="credentials[password_confirmation]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+
+<!-- Account dropdown -->
+        <div class="row justify-content-end no-gutters dropdown signed-in">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form class="dropdown-item" id="change-password">
+              <label class="col-form-label">Change Password</label>
+              <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
+              <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+              <button id="sign-out" class="form-control btn btn-primary dropdown-item" type="button">Sign Out</button>
+          </form>
+          </div>
+        </div>
+
+      </section>
     </body>
 </html>
