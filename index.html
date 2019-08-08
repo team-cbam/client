@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Eat Up</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,79 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Eat Up</h1>
+      <section class="container auth">
+          <div class="row justify-content-end">
+            <h1 class="col-6 col-lg-3 m-3">Welcome!</h1>
+          </div>
+          <div class="row justify-content-end">
+            <div class="auth-message col-6 col-lg-3"></div>
+          </div>
+          <div class="row justify-content-end">
+          <div class="sign-in-screen p-4 signed-out justify-content-center flex-column col-6 col-lg-3">
+            <h4 class="p-2">Sign In</h4>
+            <form id="sign-in" class="p-2">
+              <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
+              <input class="form-control" type="password" placeholder="Password" name="credentials[password]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <a class='sign-up-link' href='#'>New to Eat up? Create an account here.</a>
+          </div>
+          <div class="sign-up-screen p-4 signed-out justify-content-center flex-column col-6 col-lg-3">
+            <h4 class="p-2">Sign Up</h4>
+            <form id="sign-up" class="p-2 justify-content-center flex-column">
+              <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
+              <input class="form-control" type="password" placeholder="Password" name="credentials[password]">
+              <input class="form-control" type="password" placeholder="Confirm Password" name="credentials[password_confirmation]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <a class='sign-in-link' href='#'>Already have an account? Sign in here.</a>
+          </div>
+        </div>
+        <div class='aside signed-in my-events'>
+          <!-- contains both rsvp'd and owned events -->
+          <div id='my-events'>
+            <div id='my-created-events'>
+              <form id='update-my-event'>
+              </form>
+              <button id='delete-my-event'>
+              </button>
+            </div>
+            <div id='my-rsvpd-events'>
+            </div>
+          </div>
+          <form id='create-event'>
+
+          </form>
+        </div>
+
+<!-- Account dropdown -->
+        <div class="row justify-content-end no-gutters dropdown signed-in">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form class="dropdown-item" id="change-password">
+              <label class="col-form-label">Change Password</label>
+              <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
+              <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+              <button id="sign-out" class="form-control btn btn-primary dropdown-item" type="button">Sign Out</button>
+          </form>
+          </div>
+        </div>
+
+      </section>
+
+      <section>
+        <div class='main-events-screen' id='all-events'>
+          <div id='one-event'>
+            <div id='rsvp-events'>
+              <form id='rsvp-form'>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </body>
 </html>
