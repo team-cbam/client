@@ -28,6 +28,11 @@ const showSignUp = () => {
 
 }
 
+const showSignIn = () => {
+  $('.sign-in-screen').show()
+  $('.sign-up-screen').hide()
+}
+
 const signUpSuccess = data => {
   api.signIn(store.save)
     .then(signInSuccess)
@@ -119,5 +124,9 @@ module.exports = {
   signedOut,
   signedIn,
   showSignUp,
+<<<<<<< HEAD
   signedIn
+=======
+  showSignIn
+>>>>>>> Rework auth html
 }
