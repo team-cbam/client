@@ -38,11 +38,16 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
+const onSignUpScreen = event => {
+  ui.showSignUp()
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
+  $('.sign-up-link').on('click', onSignUpScreen)
 }
 
 module.exports = {
