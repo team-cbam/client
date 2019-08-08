@@ -1,1 +1,1 @@
-Welcome to "Eat Up"!  A Scrumptious social site for scheduling your snacking shindigs!!  No more missing out on carnitas because your calendar was too cluttered, no more missing spaghetti due to scheduling conflicts - get your designated dining done right with the app that helps you manage your meals
+Hello I am a readme
