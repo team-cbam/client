@@ -1,15 +1,20 @@
 {{#if event}}
+<div class="ml-5 mr-2">
   <div><h2> {{event.name}}</h2></div>
+  <div class="d-flex justify-content-end">
+    <button class="back-to-events">Back to Events</button>
+  </div>
   <div>
     <p>
+      <img src="">
       <b>Date:</b> {{event.date}}<br>
       <b>Location:</b> {{event.location}}<br>
       <b>Host:</b> {{event.owner}}<br>
-      <b>RSVP:</b>
+      <b>Description:</b> {{event.description}}<br>
       <form>
-        <button class='btn attending' data-attendee="{{store.user.id}}">I'm coming!</button>
-        <button class='btn interested' data-attendee="{{store.user.id}}">I'm interested</button>
+        <button class='btn btn-primary attending' data-attendee="{{store.user.id}}">RSVP to this event</button>
       </form>
     </p>
   </div>
+</div>
 {{/if}}
