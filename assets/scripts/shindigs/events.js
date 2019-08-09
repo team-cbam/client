@@ -13,7 +13,7 @@ const onCreateEvent = event => {
     .catch(ui.createEventFailure)
 }
 
-const onDeleteEvents = (event) => {
+const onDeleteEvent = (event) => {
   event.preventDefault()
   const eventId = event.target.dataset.id
   console.log(eventId)
@@ -48,7 +48,7 @@ const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
   $(document).on('submit', '#update-event', onUpdateEvents)
-  $(document).on('click', '#delete-event', onDeleteEvents)
+  $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
 }
@@ -56,7 +56,7 @@ const addHandlers = () => {
 module.exports = {
   onCreateEvent,
   onGetAllEvents,
-  onDeleteEvents,
+  onDeleteEvent,
   onUpdateEvents,
   addHandlers,
   onOpenEvent
