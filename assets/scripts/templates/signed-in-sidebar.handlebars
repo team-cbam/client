@@ -1,0 +1,35 @@
+<div class="row justify-content-end no-gutters dropdown">
+  <!-- Account dropdown -->
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Account
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <form class="dropdown-item" id="change-password">
+      <label class="col-form-label">Change Password</label>
+      <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
+      <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <button id="sign-out" class="form-control btn btn-primary dropdown-item" type="button">Sign Out</button>
+  </form>
+  </div>
+</div>
+
+<div class='row justify-content-center mt-2'>
+  <!-- contains both rsvp'd and owned events -->
+  <button id="see-all-events" class="event-button">See All Events</button>
+  <button id="my-events" class="event-button">See My Events</button>
+  <button id="my-rsvps" class="event-button">See My RSVP's</button>
+  <button id="create-event" class="event-button">Create Event</button>
+</div>
+
+<!-- <div id='my-created-events'>
+<form id='update-my-event'>
+</form>
+<button id='delete-my-event'>
+</button>
+</div>
+<div id='my-rsvpd-events'>
+</div>
+<form id='create-event'> -->
+<!--
+</form> -->

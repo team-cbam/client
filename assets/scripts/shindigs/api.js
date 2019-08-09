@@ -28,10 +28,7 @@ const updateEvents = formData => {
 const getEvents = function () {
   return $.ajax({
     url: config.apiUrl + '/events',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
   })
 }
 

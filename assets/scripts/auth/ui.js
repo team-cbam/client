@@ -1,114 +1,77 @@
 'use strict'
 
-const signUpMessage = require('../templates/sign-up-message.handlebars')
-const signInMessage = require('../templates/sign-in-message.handlebars')
-const changePasswordMessage = require('../templates/change-password-message.handlebars')
-const signOutMessage = require('../templates/sign-out-message.handlebars')
+const signInScreen = require('../templates/sign-in-screen.handlebars')
+const signUpScreen = require('../templates/sign-up-screen.handlebars')
+const signedInSidebar = require('../templates/signed-in-sidebar.handlebars')
 const store = require('./../store')
 const api = require('./api.js')
 // const api = require('./api')
 
 const signedIn = () => {
-  $('.signed-out').hide()
-  $('.signed-in').show()
+  const sidebar = signedInSidebar()
+  $('.sidebar').html(sidebar)
   $('form').trigger('reset')
 }
 
 const signedOut = () => {
-  $('.signed-in').hide()
-  $('.hidden').hide()
-  $('.signed-out').show()
   $('form').trigger('reset')
-  $('.sign-up-screen').hide()
 }
 
 const showSignUp = () => {
-  $('.sign-up-screen').show()
-  $('.sign-in-screen').hide()
-
+  const signUpHTML = signUpScreen()
+  $('.sidebar').html(signUpHTML)
 }
 
 const showSignIn = () => {
-  $('.sign-in-screen').show()
-  $('.sign-up-screen').hide()
+  const signInHTML = signInScreen()
+  $('.sidebar').html(signInHTML)
 }
 
 const signUpSuccess = data => {
+  $('.auth-message').html('<p>Sign Up Successful!</p>')
+  store.user = data.user
+
   api.signIn(store.save)
     .then(signInSuccess)
-  const successMessage = signUpMessage({ input: data })
-  $('.auth-message').html(successMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
-  signedIn()
-  store.user = data.user
 }
 
 const signUpFailure = data => {
-  const errorMessage = signUpMessage({ input: '' })
-  $('.auth-message').html(errorMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  $('.auth-message').html('<p>Sign Up Failed</p>')
   $('form').trigger('reset')
 }
 
 const signInSuccess = data => {
-  const successMessage = signInMessage({ input: data })
-  $('.auth-message').html(successMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  console.log('here')
+  $('.auth-message').html('<p>Sign In Successful!</p>')
   signedIn()
   store.user = data.user
 }
 
 const signInFailure = data => {
-  const errorMessage = signInMessage({ input: '' })
-  $('.auth-message').html(errorMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  $('.auth-message').html('<p>Sign In Failed!</p>')
   $('form').trigger('reset')
 }
 
 const changePasswordSuccess = data => {
-  const successMessage = changePasswordMessage({ input: true })
-  $('.auth-message').html(successMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  $('.auth-message').html('<p>Password changed successfully!</p>')
   $('form').trigger('reset')
   $('.dropdown-toggle').dropdown('hide')
   // $('#change-password-modal').modal('hide')
 }
 
 const changePasswordFailure = data => {
-  const errorMessage = changePasswordMessage({ input: false })
-  $('.auth-message').html(errorMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  $('.auth-message').html('<p>Sorry, we were unable to change your password</p>')
   $('form').trigger('reset')
 }
 
 const signOutSuccess = data => {
-  const successMessage = signOutMessage({ input: 'success' })
-  $('.auth-message').html(successMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  $('.auth-message').html('<p>Signed out successfully</p>')
   store.user = null
   signedOut()
 }
 
 const signOutFailure = data => {
-  const errorMessage = signOutMessage({ input: '' })
-  $('.auth-message').html(errorMessage)
-  setTimeout(() => {
-    $('.auth-message').html('')
-  }, 5000)
+  $('.auth-message').html('<p>Sorry, we were unable to sign you out</p>')
   $('form').trigger('reset')
 }
 
@@ -123,5 +86,6 @@ module.exports = {
   signOutFailure,
   signedOut,
   signedIn,
-  showSignUp
+  showSignUp,
+  showSignIn
 }
