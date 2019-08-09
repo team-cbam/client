@@ -1,5 +1,6 @@
 const showEventsTemplate = require('../templates/handlebars/event-listing.handlebars')
 const openedEvent = require('../templates/handlebars/event-page.handlebars')
+const ownerButtons = require('../templates/owner-buttons.handlebars')
 const store = require('../store')
 
 const getEventsSuccess = (data) => {
@@ -17,8 +18,12 @@ const getEventsFailure = function (error) {
 }
 
 const openEventSuccess = data => {
-  const openEventHTML = openedEvent({ event: data.event, user: store.user })
+  const openEventHTML = openedEvent({ event: data.event })
   $('.content').html(openEventHTML)
+  if (store.user && data.event.owner === store.user._id) {
+    const ownerButtonsHTML = ownerButtons({ event: data.event })
+    $('.content').append(ownerButtonsHTML)
+  }
 }
 
 const clearEvents = () => {
