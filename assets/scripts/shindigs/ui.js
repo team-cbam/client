@@ -31,14 +31,14 @@ const clearEvents = () => {
   $('#message').text('Cleared all the events!')
 }
 
-const createEventsSuccess = () => {
+const createEventSuccess = () => {
   $('#message').text('Yay! You created a new event!')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('form').trigger('reset')
 }
 
-const createEventsFailure = function (error) {
+const createEventFailure = function (error) {
   $('#message').text('Error on creating a event')
   $('#message').removeClass()
   $('#message').addClass('failure')
@@ -93,8 +93,8 @@ module.exports = {
   failure,
   getEventsSuccess,
   getEventsFailure,
-  createEventsSuccess,
-  createEventsFailure,
+  createEventSuccess,
+  createEventFailure,
   deleteEventsFailure,
   updateEventsSuccess,
   updateEventsFailure,

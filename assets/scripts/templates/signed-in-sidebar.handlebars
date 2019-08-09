@@ -27,31 +27,32 @@
   </button>
 
   <!-- Modal for creating an event -->
-<div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="createEventModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="createEventModalCenterTitle">Create An Event</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p> Please fill in all information. </p>
-        <form id="create-event">
-          <div class="inputs">
-            Upload an image for your event!
-            <input type=file name="event[image]">
-            <input type=text placeholder="name" name="event[name]">
-            <input type=number placeholder="year" min=1950 name="envelope[year]">
-            <input type=number placeholder="budget" min=0 name="envelope[budget]">
-          </div>
-          <button>Make Changes</button>
-        </form>
+  <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="createEventModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createEventModalCenterTitle">Create An Event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p> Please fill in all information. </p>
+          <form id="create-event">
+            <div class="inputs" style="display: grid;">
+              <input type=text placeholder="name" name="event[name]">
+              <input type=text placeholder="location" name="event[location]">
+              <input type=datetime-local placeholder="When is your event?" name="event[date]">
+              <input type=text placeholder='What is your event all about?' name="event[description]" height="3rem">
+              <p>Upload an image for your event!</p>
+              <input type=file name="event[image]">
+            </div>
+            <button>Make Changes</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- <div id='my-created-events'>
