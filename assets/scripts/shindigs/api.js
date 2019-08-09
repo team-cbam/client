@@ -32,7 +32,7 @@ const getEvents = function () {
   })
 }
 
-const deleteEvents = eventId => {
+const deleteEvent = eventId => {
   return $.ajax({
     url: config.apiUrl + '/events/' + eventId,
     method: 'DELETE',
@@ -51,7 +51,7 @@ const openEvent = id => {
 module.exports = {
   createEvents,
   getEvents,
-  deleteEvents,
+  deleteEvent,
   updateEvents,
   openEvent
 }
