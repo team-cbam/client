@@ -14,7 +14,7 @@
     <body>
       <h1>Eat Up!</h1>
 
-      <div class="row">
+      <div class="wrapper row">
 
       <!-- Content body -->
       <section class="container all-events col-8 p-0">
@@ -23,8 +23,9 @@
 
       <!-- auth sidebar -->
       <section class="container auth col-4 p-0">
+        <div class="row flex-column align-items-center">
         <!-- Welcome message -->
-          <div class="row">
+          <div>
             <h1>Welcome!</h1>
           </div>
 
@@ -32,9 +33,8 @@
             <div class="auth-message"></div>
           </div>
 
-          <div class="sign-screen">
+          <div class="row flex-column sidebar">
             <!-- Sign in screen -->
-            <div class="row">
               <div class="sign-in-screen signed-out justify-content-center flex-column">
                 <h4 class="p-2">Sign In</h4>
                 <form id="sign-in" class="p-2">
@@ -45,41 +45,7 @@
                 <a class='sign-up-link' href="#">New to Eat up? Create an account here.</a>
               </div>
             </div>
-          </div>
-
-        <div class='aside signed-in my-events invisible'>
-          <!-- contains both rsvp'd and owned events -->
-          <div id='my-events'>
-            <div id='my-created-events'>
-              <form id='update-my-event'>
-              </form>
-              <button id='delete-my-event'>
-              </button>
-            </div>
-            <div id='my-rsvpd-events'>
-            </div>
-          </div>
-          <form id='create-event'>
-
-          </form>
         </div>
-
-<!-- Account dropdown -->
-        <div class="row justify-content-end no-gutters dropdown signed-in invisible">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Account
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <form class="dropdown-item" id="change-password">
-              <label class="col-form-label">Change Password</label>
-              <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
-              <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
-              <button class="btn btn-primary" type="submit">Submit</button>
-              <button id="sign-out" class="form-control btn btn-primary dropdown-item" type="button">Sign Out</button>
-          </form>
-          </div>
-        </div>
-
       </section>
 
       <section>

@@ -2,30 +2,29 @@
 
 const signInScreen = require('../templates/sign-in-screen.handlebars')
 const signUpScreen = require('../templates/sign-up-screen.handlebars')
+const signedInSidebar = require('../templates/signed-in-sidebar.handlebars')
 const store = require('./../store')
 const api = require('./api.js')
 // const api = require('./api')
 
 const signedIn = () => {
-  $('.signed-out').addClass('invisible')
-  $('.signed-in').removeClass('invisible')
+  const sidebar = signedInSidebar()
+  $('.sidebar').html(sidebar)
   $('form').trigger('reset')
 }
 
 const signedOut = () => {
   $('form').trigger('reset')
-  $('.signed-in').addClass('invisible')
-  $('.signed-out').removeClass('invisible')
 }
 
 const showSignUp = () => {
   const signUpHTML = signUpScreen()
-  $('.sign-screen').html(signUpHTML)
+  $('.sidebar').html(signUpHTML)
 }
 
 const showSignIn = () => {
   const signInHTML = signInScreen()
-  $('.sign-screen').html(signInHTML)
+  $('.sidebar').html(signInHTML)
 }
 
 const signUpSuccess = data => {
