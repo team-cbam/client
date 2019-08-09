@@ -10,18 +10,19 @@ const getEventsSuccess = (data) => {
 }
 
 const getEventsFailure = function (error) {
-  $('#message').text('Error on getting events')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.status-message').text('Error on getting events')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not get any events', error)
   setTimeout(function () {
-    $('#message').removeClass('failure')
-    $('#message').text('')
-  }, 5000)
+    $('.status-message').removeClass('failure')
+    $('.status-message').fadeOut()
+  }, 1000)
 }
 
 const openEventSuccess = data => {
+  store.current_event = data.event
   const openEventHTML = openedEvent({ event: data.event, user: store.user })
   $('.content').html(openEventHTML)
   if (store.user && data.event.owner === store.user._id) {
@@ -32,75 +33,75 @@ const openEventSuccess = data => {
 
 const clearEvents = () => {
   $('.content').empty()
-  $('#message').text('Cleared all the events!')
+  $('.status-message').text('Cleared all the events!')
 }
 
 const createEventSuccess = () => {
-  $('#message').text('Yay! You created a new event!')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('.status-message').text('Yay! You created a new event!')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('success')
   $('form').trigger('reset')
 }
 
 const createEventFailure = function (error) {
-  $('#message').text('Error on creating a event')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.status-message').text('Error on creating a event')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not create any events', error)
   setTimeout(function () {
-    $('#message').removeClass('failure')
-    $('#message').text('')
-  }, 5000)
+    $('.status-message').removeClass('failure')
+    $('.status-message').fadeOut()
+  }, 1000)
 }
 
 const showEventsSuccess = () => {
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('success')
   $('form').trigger('reset')
 }
 
 const showEventsFailure = function (error) {
-  $('#message').text('Error on creating a event')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.status-message').text('Error on creating a event')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not create any events', error)
   setTimeout(function () {
-    $('#message').removeClass('failure')
-    $('#message').text('')
-  }, 5000)
+    $('.status-message').removeClass('failure')
+    $('.status-message').fadeOut()
+  }, 1000)
 }
 
 const updateEventsSuccess = () => {
-  $('#message').text('Yay! You changed a event!')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('.status-message').text('Yay! You changed a event!')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('success')
   $('form').trigger('reset')
 }
 
 const updateEventsFailure = function (error) {
-  $('#message').text('Error on creating a event')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.status-message').text('Error on creating a event')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not create any events', error)
   setTimeout(function () {
-    $('#message').removeClass('failure')
-    $('#message').text('')
-  }, 5000)
+    $('.status-message').removeClass('failure')
+    $('.status-message').fadeOut()
+  }, 1000)
 }
 
 const deleteEventsFailure = function (error) {
-  $('#message').text('Error on deleting a event')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.status-message').text('Error on deleting a event')
+  $('.status-message').removeClass()
+  $('.status-message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not delete any events', error)
   setTimeout(function () {
-    $('#message').removeClass('failure')
-    $('#message').text('')
-  }, 5000)
+    $('.status-message').removeClass('failure')
+    $('.status-message').fadeOut()
+  }, 1000)
 }
 
 const failure = (error) => {
