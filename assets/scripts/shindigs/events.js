@@ -36,11 +36,20 @@ const onUpdateEvents = event => {
     .catch(ui.updateEventsSuccessFailure)
 }
 
+const onOpenEvent = event => {
+  event.preventDefault()
+  api.openEvent(event.target.dataset.id)
+    .then(ui.openEventSuccess)
+    .catch(ui.failure)
+}
+
 const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvents)
   $(document).on('submit', '#update-event', onUpdateEvents)
   $(document).on('click', '.delete-events', onDeleteEvents)
+  $(document).on('click', '.event-card', onOpenEvent)
+  $(document).on('click', '.back-to-events', onGetAllEvents)
 }
 
 module.exports = {
@@ -48,5 +57,6 @@ module.exports = {
   onGetAllEvents,
   onDeleteEvents,
   onUpdateEvents,
-  addHandlers
+  addHandlers,
+  onOpenEvent
 }

@@ -3,6 +3,7 @@
 const signInScreen = require('../templates/sign-in-screen.handlebars')
 const signUpScreen = require('../templates/sign-up-screen.handlebars')
 const signedInSidebar = require('../templates/signed-in-sidebar.handlebars')
+const signedOutSidebar = require('../templates/signed-out-sidebar.handlebars')
 const store = require('./../store')
 const api = require('./api.js')
 // const api = require('./api')
@@ -14,6 +15,8 @@ const signedIn = () => {
 }
 
 const signedOut = () => {
+  const sidebar = signedOutSidebar()
+  $('.sidebar').html(sidebar)
   $('form').trigger('reset')
 }
 
@@ -41,7 +44,6 @@ const signUpFailure = data => {
 }
 
 const signInSuccess = data => {
-  console.log('here')
   $('.auth-message').html('<p>Sign In Successful!</p>')
   signedIn()
   store.user = data.user
