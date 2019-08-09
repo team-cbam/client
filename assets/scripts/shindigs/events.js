@@ -48,11 +48,8 @@ const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
   $(document).on('submit', '#update-event', onUpdateEvents)
-<<<<<<< HEAD
   $(document).on('click', '#delete-event', onDeleteEvent)
-=======
   $(document).on('click', '.delete-event', onDeleteEvent)
->>>>>>> Add Delete to Event
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
 }
