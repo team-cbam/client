@@ -14,7 +14,7 @@ const createEvents = formData => {
   })
 }
 
-const updateEvents = formData => {
+const updateEvents = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/events/' + formData.event.id,
     method: 'PATCH',

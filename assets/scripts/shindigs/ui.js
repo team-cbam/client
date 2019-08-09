@@ -15,6 +15,10 @@ const getEventsFailure = function (error) {
   $('#message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not get any events', error)
+  setTimeout(function () {
+    $('#message').removeClass('failure')
+    $('#message').text('')
+  }, 5000)
 }
 
 const openEventSuccess = data => {
@@ -44,6 +48,10 @@ const createEventFailure = function (error) {
   $('#message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not create any events', error)
+  setTimeout(function () {
+    $('#message').removeClass('failure')
+    $('#message').text('')
+  }, 5000)
 }
 
 const showEventsSuccess = () => {
@@ -58,6 +66,10 @@ const showEventsFailure = function (error) {
   $('#message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not create any events', error)
+  setTimeout(function () {
+    $('#message').removeClass('failure')
+    $('#message').text('')
+  }, 5000)
 }
 
 const updateEventsSuccess = () => {
@@ -73,6 +85,10 @@ const updateEventsFailure = function (error) {
   $('#message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not create any events', error)
+  setTimeout(function () {
+    $('#message').removeClass('failure')
+    $('#message').text('')
+  }, 5000)
 }
 
 const deleteEventsFailure = function (error) {
@@ -81,6 +97,10 @@ const deleteEventsFailure = function (error) {
   $('#message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not delete any events', error)
+  setTimeout(function () {
+    $('#message').removeClass('failure')
+    $('#message').text('')
+  }, 5000)
 }
 
 const failure = (error) => {
