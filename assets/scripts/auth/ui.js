@@ -44,7 +44,6 @@ const signUpFailure = data => {
 }
 
 const signInSuccess = data => {
-  console.log('here')
   $('.auth-message').html('<p>Sign In Successful!</p>')
   signedIn()
   store.user = data.user

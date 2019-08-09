@@ -6,14 +6,16 @@
   </div>
   <div>
     <p>
-      <img src="">
       <b>Date:</b> {{event.date}}<br>
       <b>Location:</b> {{event.location}}<br>
       <b>Host:</b> {{event.owner}}<br>
       <b>Description:</b> {{event.description}}<br>
       <form>
-        <button class='btn btn-primary attending' data-attendee="{{store.user.id}}">RSVP to this event</button>
+        <button class="btn btn-primary attending" data-attendee="{{store.user.id}}">RSVP to this event</button>
       </form>
+      <div class="delete-button">
+      {{addDelete event.owner user._id}}
+      </div>
     </p>
   </div>
 </div>
