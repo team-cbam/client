@@ -42,9 +42,16 @@ const deleteEvents = eventId => {
   })
 }
 
+const openEvent = id => {
+  store.event_id = id
+  return $.ajax({
+    url: config.apiUrl + `/events/${id}`
+  })
+}
 module.exports = {
   createEvents,
   getEvents,
   deleteEvents,
-  updateEvents
+  updateEvents,
+  openEvent
 }

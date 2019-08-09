@@ -1,4 +1,6 @@
 const showEventsTemplate = require('../templates/handlebars/event-listing.handlebars')
+const openedEvent = require('../templates/handlebars/event-page.handlebars')
+const store = require('../store')
 
 const getEventsSuccess = (data) => {
   const showEventsHtml = showEventsTemplate({ events: data.events })
@@ -12,6 +14,11 @@ const getEventsFailure = function (error) {
   $('#message').addClass('failure')
   $('form').trigger('reset')
   console.error('did not get any events', error)
+}
+
+const openEventSuccess = data => {
+  const openEventHTML = openedEvent({ event: data.event, user: store.user })
+  $('.content').html(openEventHTML)
 }
 
 const clearEvents = () => {
@@ -72,6 +79,7 @@ const deleteEventsFailure = function (error) {
 }
 
 const failure = (error) => {
+  $('.status-message').text('An Error Occurred').css('color', 'red')
   console.error(error)
 }
 
@@ -86,5 +94,6 @@ module.exports = {
   updateEventsSuccess,
   updateEventsFailure,
   showEventsSuccess,
-  showEventsFailure
+  showEventsFailure,
+  openEventSuccess
 }
