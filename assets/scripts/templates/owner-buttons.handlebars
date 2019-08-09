@@ -21,15 +21,15 @@
       <p> Please fill in all information. </p>
       <form enctype="multipart/form-data" autocomplete="on" id="update-event">
         <div class="inputs">
-          <label for=event-image class="col-form-label">Upload an image for your event!</label>
+          <label for=event-image class="form-control col-form-label">Upload an image for your event!</label>
           <input type=file id=event-image name="event[image]">
-          <label for=event-name class="col-form-label">Event name:</label>
+          <label for=event-name class="form-control col-form-label">Event name:</label>
           <input type=text id=event-name placeholder="name" name="event[name]">
-          <label for=event-location class="col-form-label">Location</label>
+          <label for=event-location class="form-control col-form-label">Location</label>
           <input type=text id=event-location placeholder="location" name="event[location]">
-          <label for=event-date class="col-form-label">Date</label>
+          <label for=event-date class="form-control col-form-label">Date</label>
           <input type=date id=event-date placeholder="date" min=0 name="event[date]">
-          <label for=event-description class="col-form-label">Description</label>
+          <label for=event-description class="form-control col-form-label">Description</label>
           <input type=text id=event-description placeholder="description" min=0 name="event[description]">
         </div>
         <button>Make Changes</button>
