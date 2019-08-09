@@ -3,22 +3,41 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
+const config = require('./../config')
 
-const onCreateEvent = event => {
+const onCreateEvents = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
   api.createEvents(formData)
-    .then(ui.createEventSuccess)
-    .catch(ui.createEventFailure)
+    .then(function (event) {
+      event.preventDefault()
+      console.log('event', event)
+      const imageData = new FormData(event.target)
+      console.log(imageData)
+      for (const [key, value] of imageData.entries()) {
+        console.log(key, value)
+      }
+      $.ajax({
+        url: config.apiUrl + '/image-uploads',
+        data: imageData,
+        type: 'POST',
+        contentType: false,
+        processData: false
+
+          // }).then(display)
+          .then(console.error)
+      })
+    })
+    .then(ui.createEventsSuccess)
+    .catch(ui.createEventsFailure)
 }
 
-const onDeleteEvent = (event) => {
+const onDeleteEvents = (event) => {
   event.preventDefault()
-  const eventId = event.target.dataset.id
-  console.log(eventId)
+  const eventId = $(event.target).data('id')
   api.deleteEvents(eventId)
-    .then(() => onGetAllEvents())
+    .then(() => onGetAllEvents(event))
     .catch(ui.failure)
 }
 
@@ -37,27 +56,22 @@ const onUpdateEvents = event => {
     .catch(ui.updateEventsSuccessFailure)
 }
 
-const onOpenEvent = event => {
-  event.preventDefault()
-  api.openEvent(event.target.dataset.id)
-    .then(ui.openEventSuccess)
-    .catch(ui.failure)
-}
-
 const addHandlers = () => {
-  $(document).on('click', '#see-all-events', onGetAllEvents)
-  $(document).on('submit', '#create-event', onCreateEvent)
-  $(document).on('submit', '#update-event', onUpdateEvents)
-  $(document).on('click', '#delete-event', onDeleteEvent)
-  $(document).on('click', '.event-card', onOpenEvent)
-  $(document).on('click', '.back-to-events', onGetAllEvents)
+  $('#getEventsButton').on('submit ')
+  $('#getEventsButton').on('click', onGetAllEvents)
+  $('body').on('submit', '#create-event', onCreateEvents)
+  $('body').on('submit', '#update-event', onUpdateEvents)
+  $('body').on('click', '.delete-events', onDeleteEvents)
+  // const display = function(data) {
+  //   console.log(data)
+  //   //   $('#display').html(`<img src="${data.ImageUpload.url}/>`)
+  //   // }
 }
 
 module.exports = {
-  onCreateEvent,
+  onCreateEvents,
   onGetAllEvents,
-  onDeleteEvent,
+  onDeleteEvents,
   onUpdateEvents,
-  addHandlers,
-  onOpenEvent
+  addHandlers
 }
