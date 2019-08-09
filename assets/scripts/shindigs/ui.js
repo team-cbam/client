@@ -18,7 +18,7 @@ const getEventsFailure = function (error) {
 }
 
 const openEventSuccess = data => {
-  const openEventHTML = openedEvent({ event: data.event })
+  const openEventHTML = openedEvent({ event: data.event, user: store.user })
   $('.content').html(openEventHTML)
   if (store.user && data.event.owner === store.user._id) {
     const ownerButtonsHTML = ownerButtons({ event: data.event, editable: true })
