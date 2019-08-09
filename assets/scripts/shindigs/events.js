@@ -50,6 +50,7 @@ const addHandlers = () => {
   $(document).on('click', '.delete-events', onDeleteEvents)
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
+  $(document).on('click', '#create-event')
 }
 
 module.exports = {
