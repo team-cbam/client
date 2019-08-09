@@ -1,4 +1,40 @@
+{{#if editable}}
 <div class="owner-buttons ml-5">
-  <button id='update-event' class="btn btn-primary data-id={{event._id}}">Update Event</button>
-  <button id='delete-event' class="btn btn-danger data-id={{event._id}}">Delete Event</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#update-event-modal" data-name={{event.name}} data-location={{event.location}} data-date={{event.date}} data-description={{event.description}} data-id={{event.id}}>Edit</button>
+
+    <!-- Button trigger delete modal -->
+    <!-- <button id='delete-event' class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteModal" data-id={{event.id}}>Delete</button> -->
+  </div>
+{{/if}}
+
+<!-- Modal for updating an event -->
+<div class="modal fade" id="update-event-modal" tabindex="-1" role="dialog" aria-labelledby="updateEventModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="updateEventModalCenterTitle">Create An Event</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p> Please fill in all information. </p>
+      <form enctype="multipart/form-data" autocomplete="on" id="update-event">
+        <div class="inputs">
+          <label for=event-image class="form-control col-form-label">Upload an image for your event!</label>
+          <input type=file id=event-image name="event[image]">
+          <label for=event-name class="form-control col-form-label">Event name:</label>
+          <input type=text id=event-name placeholder="name" name="event[name]">
+          <label for=event-location class="form-control col-form-label">Location</label>
+          <input type=text id=event-location placeholder="location" name="event[location]">
+          <label for=event-date class="form-control col-form-label">Date</label>
+          <input type=date id=event-date placeholder="date" name="event[date]">
+          <label for=event-description class="form-control col-form-label">Description</label>
+          <input type=text id=event-description placeholder="description" name="event[description]">
+        </div>
+        <button>Make Changes</button>
+      </form>
+    </div>
+  </div>
+</div>
 </div>
