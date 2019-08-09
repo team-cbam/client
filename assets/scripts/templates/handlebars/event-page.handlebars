@@ -10,9 +10,13 @@
       <b>Location:</b> {{event.location}}<br>
       <b>Host:</b> {{event.owner}}<br>
       <b>Description:</b> {{event.description}}<br>
+      {{#if user}}
       <form>
         <button class="btn btn-primary attending" data-attendee="{{store.user.id}}">RSVP to this event</button>
       </form>
+      {{else}}
+      <p> Want to come to this event? Sign in and enjoy the fun!</a>
+      {{/if}}
     </p>
   </div>
 </div>
