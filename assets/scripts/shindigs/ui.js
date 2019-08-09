@@ -1,5 +1,6 @@
 const showEventsTemplate = require('../templates/handlebars/event-listing.handlebars')
 const openedEvent = require('../templates/handlebars/event-page.handlebars')
+const ownerButtons = require('../templates/owner-buttons.handlebars')
 const store = require('../store')
 
 const getEventsSuccess = (data) => {
@@ -17,8 +18,12 @@ const getEventsFailure = function (error) {
 }
 
 const openEventSuccess = data => {
-  const openEventHTML = openedEvent({ event: data.event, user: store.user })
+  const openEventHTML = openedEvent({ event: data.event })
   $('.content').html(openEventHTML)
+  if (store.user && data.event.owner === store.user._id) {
+    const ownerButtonsHTML = ownerButtons({ event: data.event, editable: true })
+    $('.content').append(ownerButtonsHTML)
+  }
 }
 
 const clearEvents = () => {
@@ -26,14 +31,14 @@ const clearEvents = () => {
   $('#message').text('Cleared all the events!')
 }
 
-const createEventsSuccess = () => {
+const createEventSuccess = () => {
   $('#message').text('Yay! You created a new event!')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('form').trigger('reset')
 }
 
-const createEventsFailure = function (error) {
+const createEventFailure = function (error) {
   $('#message').text('Error on creating a event')
   $('#message').removeClass()
   $('#message').addClass('failure')
@@ -88,8 +93,8 @@ module.exports = {
   failure,
   getEventsSuccess,
   getEventsFailure,
-  createEventsSuccess,
-  createEventsFailure,
+  createEventSuccess,
+  createEventFailure,
   deleteEventsFailure,
   updateEventsSuccess,
   updateEventsFailure,
