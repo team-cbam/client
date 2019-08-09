@@ -17,12 +17,11 @@ const onDeleteEvents = (event) => {
   event.preventDefault()
   const eventId = $(event.target).data('id')
   api.deleteEvents(eventId)
-    .then(() => onGetEvents(event))
+    .then(() => onGetAllEvents(event))
     .catch(ui.failure)
 }
 
-const onGetEvents = function (event) {
-  event.preventDefault()
+const onGetAllEvents = function (event) {
   api.getEvents()
     .then(ui.getEventsSuccess)
     .catch(ui.getEventsSuccessFailure)
@@ -38,16 +37,15 @@ const onUpdateEvents = event => {
 }
 
 const addHandlers = () => {
-  $('#getEventsButton').on('submit ')
-  $('#getEventsButton').on('click', onGetEvents)
-  $('body').on('submit', '#create-event', onCreateEvents)
-  $('body').on('submit', '#update-event', onUpdateEvents)
-  $('body').on('click', '.delete-events', onDeleteEvents)
+  $(document).on('click', '#see-all-events', onGetAllEvents)
+  $(document).on('submit', '#create-event', onCreateEvents)
+  $(document).on('submit', '#update-event', onUpdateEvents)
+  $(document).on('click', '.delete-events', onDeleteEvents)
 }
 
 module.exports = {
   onCreateEvents,
-  onGetEvents,
+  onGetAllEvents,
   onDeleteEvents,
   onUpdateEvents,
   addHandlers
