@@ -3,7 +3,7 @@
     <button class="btn btn-primary" data-toggle="modal" data-target="#update-event-modal" data-name={{event.name}} data-location={{event.location}} data-date={{event.date}} data-description={{event.description}} data-id={{event.id}}>Edit</button>
 
     <!-- Button trigger delete modal -->
-    <button id='delete-event' class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteModal" data-id={{event.id}}>Delete</button>
+    <!-- <button id='delete-event' class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteModal" data-id={{event.id}}>Delete</button> -->
   </div>
 {{/if}}
 
@@ -28,9 +28,9 @@
           <label for=event-location class="form-control col-form-label">Location</label>
           <input type=text id=event-location placeholder="location" name="event[location]">
           <label for=event-date class="form-control col-form-label">Date</label>
-          <input type=date id=event-date placeholder="date" min=0 name="event[date]">
+          <input type=date id=event-date placeholder="date" name="event[date]">
           <label for=event-description class="form-control col-form-label">Description</label>
-          <input type=text id=event-description placeholder="description" min=0 name="event[description]">
+          <input type=text id=event-description placeholder="description" name="event[description]">
         </div>
         <button>Make Changes</button>
       </form>

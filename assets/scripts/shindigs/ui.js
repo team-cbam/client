@@ -21,7 +21,7 @@ const openEventSuccess = data => {
   const openEventHTML = openedEvent({ event: data.event })
   $('.content').html(openEventHTML)
   if (store.user && data.event.owner === store.user._id) {
-    const ownerButtonsHTML = ownerButtons({ event: data.event })
+    const ownerButtonsHTML = ownerButtons({ event: data.event, editable: true })
     $('.content').append(ownerButtonsHTML)
   }
 }
