@@ -4,32 +4,13 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const store = require('../store')
 const api = require('./api')
 const ui = require('./ui')
-const config = require('./../config')
+// const config = require('./../config')
 
 const onCreateEvent = event => {
   event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
+  // const formData = getFormFields(form)
+  const formData = new FormData(event.target)
   api.createEvents(formData)
-    .then(function (event) {
-      event.preventDefault()
-      console.log('event', event)
-      const imageData = new FormData(event.target)
-      console.log(imageData)
-      for (const [key, value] of imageData.entries()) {
-        console.log(key, value)
-      }
-      $.ajax({
-        url: config.apiUrl + '/image-uploads',
-        data: imageData,
-        type: 'POST',
-        contentType: false,
-        processData: false
-
-          // }).then(display)
-          .then(console.error)
-      })
-    })
     .then(ui.createEventsSuccess)
     .catch(ui.createEventsFailure)
 }
