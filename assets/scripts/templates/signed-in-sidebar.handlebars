@@ -38,16 +38,16 @@
         </div>
         <div class="modal-body">
           <p> Please fill in all information. </p>
-          <form enctype="multipart/form-data" id="create-event" name="event">
-            <div class="inputs" style="display: grid;">
-              <input type="text" placeholder="name" name="event[name]">
-              <input type="text" placeholder="location" name="event[location]">
-              <input type="datetime-local" placeholder="When is your event?" name="event[date]">
-              <input type="text" placeholder='What is your event all about?' name="event[description]" height="3rem">
-              <p>Upload an image for your event!</p>
-              <input type="file" name="image">
-            </div>
-            <button>Create Event</button>
+            <form enctype="multipart/form-data" id="create-event">
+              <div class="inputs" style="display: grid;">
+                <input type="text" placeholder="name" name="name">
+                <input type="text" placeholder="location" name="location">
+                <input type="date" placeholder="When is your event?" name="date">
+                <input type="text" placeholder="What is your event all about?" name="description">
+                <p>Upload an image for your event!</p>
+                <input type="file" name="file">
+              </div>
+              <button>Create Event</button>
           </form>
         </div>
       </div>
