@@ -48,6 +48,10 @@ const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
   api.updateEvent(formData)
+    .then(event => {
+      ui.openEventSuccess(event)
+      return event
+    })
     .then(ui.updateEventsSuccess)
     .catch(ui.updateEventsSuccessFailure)
 }
@@ -55,10 +59,6 @@ const onUpdateEvent = event => {
 const onOpenEvent = event => {
   event.preventDefault()
   api.openEvent(event.target.dataset.id)
-    .then(event => {
-      ui.openEventSuccess(event)
-      return event
-    })
     .then(ui.openEventSuccess)
     .catch(ui.failure)
 }
