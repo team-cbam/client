@@ -17,9 +17,41 @@
 <div class='row justify-content-center mt-2 p-4'>
   <!-- contains both rsvp'd and owned events -->
   <button id="see-all-events" class="event-button">See All Events</button>
-  <button id="my-events" class="event-button">See My Events</button>
-  <button id="my-rsvps" class="event-button">See My RSVP's</button>
-  <button id="create-event" class="event-button">Create Event</button>
+  <!-- <button id="my-events" class="event-button">See My Events</button>
+  <button id="my-rsvps" class="event-button">See My RSVP's</button> -->
+
+
+<!-- Create an event -->
+  <button type="button" class="create-event" data-toggle="modal" data-target="#create-event-modal">
+  Create Event
+  </button>
+
+  <!-- Modal for creating an event -->
+  <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="createEventModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createEventModalCenterTitle">Create An Event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p> Please fill in all information. </p>
+            <form enctype="multipart/form-data" id="create-event">
+              <div class="inputs" style="display: grid;">
+                <input type="text" placeholder="name" name="name">
+                <input type="text" placeholder="location" name="location">
+                <input type="datetime-local" placeholder="When is your event?" name="date">
+                <input type="text" placeholder="What is your event all about?" name="description">
+                <input type=text value="https://britneyseibucket.s3.amazonaws.com/image-not-found.jpg" name="image" class="invisible">
+              </div>
+              <button>Create Event</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- <div id='my-created-events'>
