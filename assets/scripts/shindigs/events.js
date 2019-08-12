@@ -6,13 +6,15 @@ const api = require('./api')
 const ui = require('./ui')
 // const config = require('./../config')
 
-const uploadImage = event => {
+const onUploadImage = event => {
   event.preventDefault()
-  console.log()
   const formData = new FormData(event.target)
   for (const [key, value] of formData.entries()) {
     console.log(key, value)
   }
+  api.uploadImage(formData)
+    .then(ui.uploadImageSuccess)
+    .then(ui.failure)
 }
 
 const onCreateEvent = event => {
@@ -74,7 +76,7 @@ const onRSVP = event => {
 const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
-  $(document).on('submit', '#image-input', uploadImage)
+  $(document).on('submit', '#upload-image', onUploadImage)
   $(document).on('submit', '#update-event', onUpdateEvents)
   $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.delete-event', onDeleteEvent)

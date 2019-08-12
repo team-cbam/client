@@ -3,6 +3,10 @@ const openedEvent = require('../templates/handlebars/event-page.handlebars')
 const ownerButtons = require('../templates/owner-buttons.handlebars')
 const store = require('../store')
 
+const uploadImageSuccess = res => {
+  $('form').trigger('reset')
+}
+
 const getEventsSuccess = (data) => {
   const showEventsHtml = showEventsTemplate({ events: data.events })
   $('.content').html(showEventsHtml)
@@ -119,5 +123,6 @@ module.exports = {
   updateEventsFailure,
   showEventsSuccess,
   showEventsFailure,
-  openEventSuccess
+  openEventSuccess,
+  uploadImageSuccess
 }

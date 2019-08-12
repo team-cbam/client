@@ -3,6 +3,16 @@
 const config = require('../config')
 const store = require('../store')
 
+const uploadImage = formData => {
+  return $.ajax({
+    method: 'POST',
+    data: formData,
+    url: config.apiUrl + '/image-uploads',
+    contentType: false,
+    processData: false
+  })
+}
+
 const createEvents = formData => {
   console.log(formData)
   return $.ajax({
@@ -53,5 +63,6 @@ module.exports = {
   getEvents,
   deleteEvent,
   updateEvents,
-  openEvent
+  openEvent,
+  uploadImage
 }
