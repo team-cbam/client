@@ -47,9 +47,6 @@ const openEvent = id => {
   })
 }
 
-
-
-
 module.exports = {
   createEvent,
   getAllEvents,
