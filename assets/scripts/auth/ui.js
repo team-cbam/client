@@ -6,12 +6,14 @@ const signedInSidebar = require('../templates/signed-in-sidebar.handlebars')
 const signedOutSidebar = require('../templates/signed-out-sidebar.handlebars')
 const store = require('./../store')
 const api = require('./api.js')
+const shinDigsEvents = require('../shindigs/events')
 // const api = require('./api')
 
 const signedIn = () => {
   const sidebar = signedInSidebar()
   $('.sidebar').html(sidebar)
   $('form').trigger('reset')
+  shinDigsEvents.onGetAllEvents()
 }
 
 const signedOut = () => {

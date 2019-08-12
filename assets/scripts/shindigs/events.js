@@ -87,7 +87,6 @@ const addHandlers = () => {
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
   $(document).on('click', '.attending', onRSVP)
-  $(document).on('click', '.see-all-rsvp', onMyRSVP)
 }
 
 module.exports = {
