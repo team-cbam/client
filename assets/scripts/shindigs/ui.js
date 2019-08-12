@@ -31,7 +31,6 @@ const getEventsFailure = function (error) {
 }
 
 const openEventSuccess = data => {
-  console.log(data.event)
   store.current_event = data.event
   const openEventHTML = openedEvent({
     event: data.event,
