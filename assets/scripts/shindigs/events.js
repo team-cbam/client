@@ -37,7 +37,7 @@ const onDeleteEvent = (event) => {
     .catch(ui.failure)
 }
 
-const onGetAllEvents = function(event) {
+const onGetAllEvents = function (event) {
   api.getAllEvents()
     .then(ui.getEventsSuccess)
     .catch(ui.getEventsSuccessFailure)
@@ -67,10 +67,7 @@ const onRSVP = event => {
     api.updateEvent({
       event: thisEvent
     })
-      .then($('.status-message').text("We've recieved your RSVP.")
-          setTimeout(function () {
-            $('.status-message').fadeOut()
-          }, 6000))
+      .then(ui.onRSVPSuccess)
       .catch(console.error)
   } else {
     $('.status-message').text("You're already attending this event.")
