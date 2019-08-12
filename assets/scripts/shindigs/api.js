@@ -11,20 +11,18 @@ const createEvent = formData => {
   console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/events',
-    data: formData,
+    data: {event: formData},
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
-    method: 'POST',
-    contentType: false,
-    processData: false
+    method: 'POST'
   })
 }
 
 const updateEvent = (formData) => {
   console.log(formData)
   return $.ajax({
-    url: config.apiUrl + '/events/' + formData._id,
+    url: config.apiUrl + '/events/' + formData.event._id,
     method: 'PATCH',
     data: formData
   })
@@ -42,7 +40,7 @@ const deleteEvent = eventId => {
     url: config.apiUrl + '/events/' + eventId,
     method: 'DELETE',
     headers: {
-      Authorization: 'Bearer token=' + store.user.token
+      Authorization: 'Bearer ' + store.user.token
     }
   })
 }
@@ -53,6 +51,9 @@ const openEvent = id => {
     url: config.apiUrl + `/events/${id}`
   })
 }
+
+
+
 
 module.exports = {
   createEvent,

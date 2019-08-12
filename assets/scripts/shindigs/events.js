@@ -18,6 +18,10 @@ const uploadImage = event => {
 const onCreateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
+  // const formData = new FormData(event.target)
+  // for (const [key, value] of formData.entries()) {
+  //   console.log(key, value)
+  // // }
   api.createEvent(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
@@ -33,7 +37,7 @@ const onDeleteEvent = (event) => {
     .catch(ui.failure)
 }
 
-const onGetAllEvents = function (event) {
+const onGetAllEvents = function(event) {
   api.getAllEvents()
     .then(ui.getEventsSuccess)
     .catch(ui.getEventsSuccessFailure)
@@ -57,17 +61,22 @@ const onOpenEvent = event => {
 
 const onRSVP = event => {
   const thisEvent = store.current_event
-  console.log(thisEvent)
+  console.log(thisEvent.rsvps.includes(store.user))
   if (!thisEvent.rsvps.includes(store.user)) {
     thisEvent.rsvps.push(store.user)
-    api.updateEvent({ event: thisEvent })
-      .then(console.log)
+    api.updateEvent({
+      event: thisEvent
+    })
+      .then($('.status-message').text("We've recieved your RSVP.")
+          setTimeout(function () {
+            $('.status-message').fadeOut()
+          }, 6000))
       .catch(console.error)
   } else {
-    $('.status-message').text("You have already RSVP'd!")
+    $('.status-message').text("You're already attending this event.")
     setTimeout(function () {
       $('.status-message').fadeOut()
-    }, 1000)
+    }, 6000)
   }
 }
 
@@ -81,6 +90,7 @@ const addHandlers = () => {
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
   $(document).on('click', '.attending', onRSVP)
+  $(document).on('click', '.see-all-rsvp', onMyRSVP)
 }
 
 module.exports = {
