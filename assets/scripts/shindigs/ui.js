@@ -4,6 +4,9 @@ const ownerButtons = require('../templates/owner-buttons.handlebars')
 const store = require('../store')
 
 const uploadImageSuccess = res => {
+  $('.status-message').text('Image uploaded')
+  $('#upload-image-modal').modal('hide')
+  $('.modal-backdrop').hide()
   $('form').trigger('reset')
 }
 
@@ -26,6 +29,7 @@ const getEventsFailure = function (error) {
 }
 
 const openEventSuccess = data => {
+  console.log(data.event)
   store.current_event = data.event
   const openEventHTML = openedEvent({ event: data.event, user: store.user })
   $('.content').html(openEventHTML)
@@ -106,9 +110,8 @@ const deleteEventsFailure = function (error) {
   }, 1000)
 }
 
-const failure = (error) => {
+const failure = () => {
   $('.status-message').text('An Error Occurred').css('color', 'red')
-  console.error(error)
 }
 
 module.exports = {

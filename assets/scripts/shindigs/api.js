@@ -13,6 +13,18 @@ const uploadImage = formData => {
   })
 }
 
+const updateImage = imageURL => {
+  return $.ajax({
+    method: 'PATCH',
+    data: {
+      event: {
+        image: imageURL
+      }
+    },
+    url: config.apiUrl + '/events/' + store.current_event._id
+  })
+}
+
 const createEvents = formData => {
   console.log(formData)
   return $.ajax({
@@ -27,11 +39,13 @@ const createEvents = formData => {
   })
 }
 
-const updateEvents = (formData, id) => {
+const updateEvents = (formData) => {
   return $.ajax({
-    url: config.apiUrl + '/events/' + id,
+    url: config.apiUrl + '/events/' + store.event_id,
     method: 'PATCH',
-    data: formData
+    data: {
+      event: formData
+    }
   })
 }
 
@@ -64,5 +78,6 @@ module.exports = {
   deleteEvent,
   updateEvents,
   openEvent,
-  uploadImage
+  uploadImage,
+  updateImage
 }

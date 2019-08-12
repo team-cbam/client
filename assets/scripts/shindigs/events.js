@@ -13,8 +13,15 @@ const onUploadImage = event => {
     console.log(key, value)
   }
   api.uploadImage(formData)
+    .then((res) => {
+      api.updateImage(res.imageUpload.url)
+      return res
+    })
+    .then(() => {
+      onOpenEvent(event)
+    })
     .then(ui.uploadImageSuccess)
-    .then(ui.failure)
+    .catch(ui.failure)
 }
 
 const onCreateEvent = event => {
@@ -44,8 +51,7 @@ const onGetAllEvents = function (event) {
 const onUpdateEvents = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  const id = event.dataset.id
-  api.updateEvents(formData, id)
+  api.updateEvents(formData)
     .then(ui.updateEventsSuccess)
     .catch(ui.updateEventsSuccessFailure)
 }
