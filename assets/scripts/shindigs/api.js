@@ -7,6 +7,7 @@ const createEvents = formData => {
   for (const [key, value] of formData.entries()) {
     console.log(key, value)
   }
+  // console.log(store.user.token)
   // console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/events',
