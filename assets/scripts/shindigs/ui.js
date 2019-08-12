@@ -100,6 +100,8 @@ const updateEventsSuccess = () => {
   $('.status-message').text('Yay! You changed a event!').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('success')
+  $('#update-event-modal').modal('hide')
+  $('.modal-backdrop').hide()
   $('form').trigger('reset')
   setTimeout(function () {
     $('.status-message').fadeOut()
