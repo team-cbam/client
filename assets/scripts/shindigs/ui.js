@@ -140,6 +140,7 @@ const deleteEventSuccess = () => {
 
 const failure = (error) => {
   $('.status-message').text('An Error Occurred').css('color', 'red').show()
+  console.error('Error!', error)
 }
 
 const onRSVPSuccess = () => {
