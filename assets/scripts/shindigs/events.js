@@ -6,7 +6,7 @@ const api = require('./api')
 const ui = require('./ui')
 // const config = require('./../config')
 
-const onCreateEvents = event => {
+const onCreateEvent = event => {
   event.preventDefault()
   // const formData = getFormFields(form)
   const formData = new FormData(event.target)
@@ -15,7 +15,7 @@ const onCreateEvents = event => {
     .catch(ui.createEventsFailure)
 }
 
-const onDeleteEvents = (event) => {
+const onDeleteEvent = (event) => {
   event.preventDefault()
   const eventId = $(event.target).data('id')
   api.deleteEvents(eventId)
@@ -73,9 +73,9 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  onCreateEvents,
+  onCreateEvent,
   onGetAllEvents,
-  onDeleteEvents,
+  onDeleteEvent,
   onUpdateEvents,
   addHandlers
 }
