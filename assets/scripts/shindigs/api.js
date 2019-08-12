@@ -11,7 +11,9 @@ const createEvents = formData => {
   // console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/events',
-    data: formData,
+    data: {
+      event: formData
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -21,11 +23,9 @@ const createEvents = formData => {
   })
 }
 
-const updateEvents = (formData) => {
-  const updated = formData.event
-  console.log(formData)
+const updateEvents = (formData, id) => {
   return $.ajax({
-    url: config.apiUrl + '/events/' + updated._id,
+    url: config.apiUrl + '/events/' + id,
     method: 'PATCH',
     data: formData
   })
