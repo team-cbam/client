@@ -9,10 +9,6 @@ const getEventsSuccess = (data) => {
   })
   $('.content').html(showEventsHtml)
   $('form').trigger('reset')
-  $('.status-message').text('All Events')
-  setTimeout(function () {
-    $('.status-message').fadeOut()
-  }, 5000)
 }
 
 const getEventsFailure = function (error) {
@@ -134,7 +130,7 @@ const deleteEventsFailure = function (error) {
 }
 
 const deleteEventSuccess = () => {
-  $('.status-message').text('You deleted an event!')
+  $('.status-message').text('You deleted an event!').show()
   setTimeout(function () {
     $('.status-message').fadeOut()
   }, 5000)

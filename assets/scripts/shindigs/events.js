@@ -33,8 +33,8 @@ const onDeleteEvent = (event) => {
   const eventId = event.target.dataset.id
   console.log(eventId)
   api.deleteEvent(eventId)
-    .then(ui.deleteEventSuccess)
     .then(() => onGetAllEvents())
+    .then(ui.deleteEventSuccess)
     .catch(ui.failure)
 }
 
