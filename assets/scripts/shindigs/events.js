@@ -11,10 +11,11 @@ const onUploadImage = event => {
   const formData = new FormData(event.target)
   api.uploadImage(formData)
     .then((res) => {
-      return api.updateImage(res.imageUpload.url)
+      api.updateImage(res.imageUpload.url)
+      return res
     })
-    .then((res) => {
-      ui.openEventSuccess(res)
+    .then(() => {
+      onOpenEvent(event)
     })
     .then(ui.uploadImageSuccess)
     .catch(ui.failure)
@@ -23,6 +24,9 @@ const onUploadImage = event => {
 const onCreateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
+  // const formData = new FormData(event.target)
+  // for (const [key, value] of formData.entries()) {
+  // // }
   api.createEvent(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
@@ -48,10 +52,6 @@ const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
   api.updateEvent(formData)
-    .then(event => {
-      ui.openEventSuccess(event)
-      return event
-    })
     .then(ui.updateEventsSuccess)
     .catch(ui.updateEventsSuccessFailure)
 }
@@ -73,7 +73,7 @@ const onRSVP = event => {
       .then(ui.onRSVPSuccess)
       .catch(console.error)
   } else {
-    $('.status-message').text("You're already attending this event.")
+    $('.status-message').text("You're already attending this event.").show()
     setTimeout(function () {
       $('.status-message').fadeOut()
     }, 6000)
