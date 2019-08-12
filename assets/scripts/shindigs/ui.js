@@ -36,11 +36,9 @@ const clearEvents = () => {
   $('.status-message').text('Cleared all the events!')
 }
 
-const createEventSuccess = () => {
-  $('.status-message').text('Yay! You created a new event!')
-  $('.status-message').removeClass()
-  $('.status-message').addClass('success')
-  $('form').trigger('reset')
+const createEventSuccess = (data) => {
+  $('#create-event-modal').modal('hide')
+  $('.modal-backdrop').hide()
 }
 
 const createEventFailure = function (error) {
