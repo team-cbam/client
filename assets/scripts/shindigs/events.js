@@ -4,22 +4,22 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const store = require('../store')
 const api = require('./api')
 const ui = require('./ui')
+// const config = require('./../config')
 
-const onCreateEvent = event => {
+const onCreateEvents = event => {
   event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
+  // const formData = getFormFields(form)
+  const formData = new FormData(event.target)
   api.createEvents(formData)
-    .then(ui.createEventSuccess)
-    .catch(ui.createEventFailure)
+    .then(ui.createEventsSuccess)
+    .catch(ui.createEventsFailure)
 }
 
-const onDeleteEvent = (event) => {
+const onDeleteEvents = (event) => {
   event.preventDefault()
-  const eventId = event.target.dataset.id
-  console.log(eventId)
+  const eventId = $(event.target).data('id')
   api.deleteEvents(eventId)
-    .then(() => onGetAllEvents())
+    .then(() => onGetAllEvents(event))
     .catch(ui.failure)
 }
 
@@ -73,10 +73,9 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  onCreateEvent,
+  onCreateEvents,
   onGetAllEvents,
-  onDeleteEvent,
+  onDeleteEvents,
   onUpdateEvents,
-  addHandlers,
-  onOpenEvent
+  addHandlers
 }
