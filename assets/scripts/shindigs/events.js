@@ -33,6 +33,7 @@ const onDeleteEvent = (event) => {
   const eventId = event.target.dataset.id
   console.log(eventId)
   api.deleteEvent(eventId)
+    .then(ui.deleteEventSuccess)
     .then(() => onGetAllEvents())
     .catch(ui.failure)
 }
@@ -46,8 +47,8 @@ const onGetAllEvents = function (event) {
 const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  const id = event.dataset.id
-  api.updateEvent(formData, id)
+  // const id = event.id
+  api.updateEvent(formData)
     .then(ui.updateEventSuccess)
     .catch(ui.updateEventSuccessFailure)
 }
