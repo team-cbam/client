@@ -34,6 +34,10 @@ const showSignIn = () => {
 
 const signUpSuccess = data => {
   $('.auth-message').html('<p>Sign Up Successful!</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   store.user = data.user
 
   api.signIn(store.save)
@@ -42,22 +46,38 @@ const signUpSuccess = data => {
 
 const signUpFailure = data => {
   $('.auth-message').html('<p>Sign Up Failed</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   $('form').trigger('reset')
 }
 
 const signInSuccess = data => {
   $('.auth-message').html('<p>Sign In Successful!</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   signedIn()
   store.user = data.user
 }
 
 const signInFailure = data => {
-  $('.auth-message').html('<p>Sign In Failed!</p>')
+  $('.auth-message').html('<p>Sign In Failed</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   $('form').trigger('reset')
 }
 
 const changePasswordSuccess = data => {
-  $('.auth-message').html('<p>Password changed successfully!</p>')
+  $('.auth-message').html('<p>Password was changed successfully</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   $('form').trigger('reset')
   $('.dropdown-toggle').dropdown('hide')
   // $('#change-password-modal').modal('hide')
@@ -65,17 +85,29 @@ const changePasswordSuccess = data => {
 
 const changePasswordFailure = data => {
   $('.auth-message').html('<p>Sorry, we were unable to change your password</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   $('form').trigger('reset')
 }
 
 const signOutSuccess = data => {
   $('.auth-message').html('<p>Signed out successfully</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   store.user = null
   signedOut()
 }
 
 const signOutFailure = data => {
-  $('.auth-message').html('<p>Sorry, we were unable to sign you out</p>')
+  $('.auth-message').html('<p>Sorry, we were unable to log you out</p>')
+  $('.auth-message').show()
+  setTimeout(function () {
+    $('.auth-message').fadeOut()
+  }, 2000)
   $('form').trigger('reset')
 }
 
