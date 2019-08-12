@@ -3,8 +3,29 @@
 const config = require('../config')
 const store = require('../store')
 
+const uploadImage = formData => {
+  return $.ajax({
+    method: 'POST',
+    data: formData,
+    url: config.apiUrl + '/image-uploads',
+    contentType: false,
+    processData: false
+  })
+}
+
+const updateImage = imageURL => {
+  return $.ajax({
+    method: 'PATCH',
+    data: {
+      event: {
+        image: imageURL
+      }
+    },
+    url: config.apiUrl + '/events/' + store.current_event._id
+  })
+}
+
 const createEvent = formData => {
-  // for (const [key, value] of formData.entries()) {
   return $.ajax({
     url: config.apiUrl + '/events',
     data: {event: formData},
@@ -17,9 +38,11 @@ const createEvent = formData => {
 
 const updateEvent = (formData) => {
   return $.ajax({
-    url: config.apiUrl + '/events/' + formData.event._id,
+    url: config.apiUrl + '/events/' + store.event_id,
     method: 'PATCH',
-    data: formData
+    data: {
+      event: formData
+    }
   })
 }
 
@@ -52,5 +75,7 @@ module.exports = {
   getAllEvents,
   deleteEvent,
   updateEvent,
-  openEvent
+  openEvent,
+  uploadImage,
+  updateImage
 }

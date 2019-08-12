@@ -6,12 +6,19 @@ const api = require('./api')
 const ui = require('./ui')
 // const config = require('./../config')
 
-const uploadImage = event => {
+const onUploadImage = event => {
   event.preventDefault()
   const formData = new FormData(event.target)
-  // for (const [key, value] of formData.entries()) {
-  //
-  // }
+  api.uploadImage(formData)
+    .then((res) => {
+      api.updateImage(res.imageUpload.url)
+      return res
+    })
+    .then(() => {
+      onOpenEvent(event)
+    })
+    .then(ui.uploadImageSuccess)
+    .catch(ui.failure)
 }
 
 const onCreateEvent = event => {
@@ -44,10 +51,9 @@ const onGetAllEvents = function (event) {
 const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  // const id = event.id
   api.updateEvent(formData)
-    .then(ui.updateEventSuccess)
-    .catch(ui.updateEventSuccessFailure)
+    .then(ui.updateEventsSuccess)
+    .catch(ui.updateEventsSuccessFailure)
 }
 
 const onOpenEvent = event => {
@@ -77,7 +83,7 @@ const onRSVP = event => {
 const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
-  $(document).on('submit', '#image-input', uploadImage)
+  $(document).on('submit', '#upload-image', onUploadImage)
   $(document).on('submit', '#update-event', onUpdateEvent)
   $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.delete-event', onDeleteEvent)

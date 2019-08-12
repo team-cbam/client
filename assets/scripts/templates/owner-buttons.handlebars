@@ -1,11 +1,33 @@
 {{#if editable}}
 <div class="owner-buttons ml-5">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#update-event-modal" data-name={{event.name}} data-location={{event.location}} data-date={{event.date}} data-description={{event.description}} data-id={{event.id}}>Edit</button>
+  <p> You are Hosting this event!</p>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#upload-image-modal" data-id="{{event._id}}">Upload an Image</button>
 
-    <button id='delete-event' class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteModal" data-id={{event._id}}>Delete</button>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#update-event-modal" data-id="{{event._id}}">Edit</button>
+
+  <button id='delete-event' class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteModal" data-id="{{event._id}}">Delete</button>
   </div>
 {{/if}}
 
+<!-- Modal for uploading an image to an event -->
+<div class="modal fade" id="upload-image-modal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadImageModalCenterTitle">Upload an Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id='upload-image' enctype="multipart/form-data">
+          <input type="file" name="file">
+          <button class="btn btn-primary" data-id="{{event._id}}">Upload File</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal for updating an event -->
 <div class="modal fade" id="update-event-modal" tabindex="-1" role="dialog" aria-labelledby="updateEventModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -21,20 +43,20 @@
       <form id="update-event" enctype="multipart/form-data">
         <!-- name input -->
         <label for="name"> Enter event name: </label>
-        <input type=text name="name" value={{event.name}}>
+        <input type=text name="name">
 
         <!-- location input -->
         <label for="location"> Enter event location: </label>
-        <input type=text placeholder="location" name="location" value={{event.location}}>
+        <input type=text placeholder="location" name="location">
 
         <!-- date and time input -->
         <label for="datetime"> Enter the date and time for your event (eg 01/01/2019 12:30PM): </label>
-        <input type=datetime-local name="date" value={{event.date}}>
+        <input type=datetime-local name="date">
 
         <!-- description -->
         <label for="description">  What is this event all about? </label>
-        <input type=text name="description" value={{event.description}}>
-        <input type=text value={{event.image}} class="invisible" name="image">
+        <input type=text name="description">
+
         <button id='update-event' class="btn btn-primary" data-id="{{event._id}}">Update Event</button>
       </form>
     </div>

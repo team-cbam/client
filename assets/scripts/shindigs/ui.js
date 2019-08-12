@@ -3,6 +3,13 @@ const openedEvent = require('../templates/handlebars/event-page.handlebars')
 const ownerButtons = require('../templates/owner-buttons.handlebars')
 const store = require('../store')
 
+const uploadImageSuccess = res => {
+  $('.status-message').text('Image uploaded')
+  $('#upload-image-modal').modal('hide')
+  $('.modal-backdrop').hide()
+  $('form').trigger('reset')
+}
+
 const getEventsSuccess = (data) => {
   const showEventsHtml = showEventsTemplate({
     events: data.events
@@ -24,6 +31,7 @@ const getEventsFailure = function (error) {
 }
 
 const openEventSuccess = data => {
+  console.log(data.event)
   store.current_event = data.event
   const openEventHTML = openedEvent({
     event: data.event,
@@ -132,7 +140,6 @@ const deleteEventSuccess = () => {
 
 const failure = (error) => {
   $('.status-message').text('An Error Occurred').css('color', 'red').show()
-  console.error(error)
 }
 
 const onRSVPSuccess = () => {
@@ -155,6 +162,7 @@ module.exports = {
   showEventsSuccess,
   showEventsFailure,
   openEventSuccess,
+  uploadImageSuccess,
   onRSVPSuccess,
   deleteEventSuccess
 }
