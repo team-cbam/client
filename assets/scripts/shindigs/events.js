@@ -6,20 +6,31 @@ const api = require('./api')
 const ui = require('./ui')
 // const config = require('./../config')
 
+const uploadImage = event => {
+  event.preventDefault()
+  console.log()
+  const formData = new FormData(event.target)
+  for (const [key, value] of formData.entries()) {
+    console.log(key, value)
+  }
+}
+
 const onCreateEvent = event => {
   event.preventDefault()
-  // const formData = getFormFields(form)
   const formData = new FormData(event.target)
+
   api.createEvents(formData)
-    .then(ui.createEventsSuccess)
-    .catch(ui.createEventsFailure)
+    .then(() => onGetAllEvents())
+    .then(ui.createEventSuccess)
+    .catch(ui.createEventFailure)
 }
 
 const onDeleteEvent = (event) => {
   event.preventDefault()
-  const eventId = $(event.target).data('id')
-  api.deleteEvents(eventId)
-    .then(() => onGetAllEvents(event))
+  const eventId = event.target.dataset.id
+  console.log(eventId)
+  api.deleteEvent(eventId)
+    .then(() => onGetAllEvents())
     .catch(ui.failure)
 }
 
@@ -31,9 +42,9 @@ const onGetAllEvents = function (event) {
 
 const onUpdateEvents = event => {
   event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-  api.updateEvents(formData)
+  const formData = getFormFields(event.target)
+  const id = event.dataset.id
+  api.updateEvents(formData, id)
     .then(ui.updateEventsSuccess)
     .catch(ui.updateEventsSuccessFailure)
 }
@@ -64,6 +75,7 @@ const onRSVP = event => {
 const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
+  $(document).on('submit', '#image-input', uploadImage)
   $(document).on('submit', '#update-event', onUpdateEvents)
   $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.delete-event', onDeleteEvent)

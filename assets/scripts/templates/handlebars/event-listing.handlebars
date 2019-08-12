@@ -3,7 +3,7 @@
   <div class="container handlebar event-card" href="#event-details" role="button" aria-expanded="false" data-id="{{event._id}}">
       <div class="card bg-light mb-3" style="max-width: 20rem;"></div>
         <div class="card-header" data-id="{{event._id}}"><h2 data-id="{{event._id}}">{{event.name}}</h2></div>
-        <div class="card-body" data-id="{{event._id}}">
+        <div class="card-body" data-id="{{event._id}}" style="background-image: url('{{event.image}}'); background-size: cover">
           <h4 class="card-title" data-id="{{event._id}}"> {{event.name}}
           </h4>
           <p class="card-text" data-id="{{event._id}}">

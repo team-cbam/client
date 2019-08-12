@@ -5,6 +5,7 @@ const store = require('./../store')
 
 const api = require('./api')
 const ui = require('./ui')
+const shindigsEvents = require('../shindigs/events')
 
 const onSignUp = event => {
   event.preventDefault()
@@ -34,6 +35,7 @@ const onChangePassword = event => {
 const onSignOut = event => {
   event.preventDefault()
   api.signOut(event)
+    .then(shindigsEvents.onGetAllEvents)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
