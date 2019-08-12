@@ -9,9 +9,6 @@ const ui = require('./ui')
 const onUploadImage = event => {
   event.preventDefault()
   const formData = new FormData(event.target)
-  for (const [key, value] of formData.entries()) {
-    console.log(key, value)
-  }
   api.uploadImage(formData)
     .then((res) => {
       api.updateImage(res.imageUpload.url)
@@ -27,7 +24,10 @@ const onUploadImage = event => {
 const onCreateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.createEvents(formData)
+  // const formData = new FormData(event.target)
+  // for (const [key, value] of formData.entries()) {
+  // // }
+  api.createEvent(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
     .catch(ui.createEventFailure)
@@ -36,22 +36,22 @@ const onCreateEvent = event => {
 const onDeleteEvent = (event) => {
   event.preventDefault()
   const eventId = event.target.dataset.id
-  console.log(eventId)
   api.deleteEvent(eventId)
     .then(() => onGetAllEvents())
+    .then(ui.deleteEventSuccess)
     .catch(ui.failure)
 }
 
 const onGetAllEvents = function (event) {
-  api.getEvents()
+  api.getAllEvents()
     .then(ui.getEventsSuccess)
     .catch(ui.getEventsSuccessFailure)
 }
 
-const onUpdateEvents = event => {
+const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.updateEvents(formData)
+  api.updateEvent(formData)
     .then(ui.updateEventsSuccess)
     .catch(ui.updateEventsSuccessFailure)
 }
@@ -65,17 +65,18 @@ const onOpenEvent = event => {
 
 const onRSVP = event => {
   const thisEvent = store.current_event
-  console.log(thisEvent.rsvps.includes(store.user._id))
-  if (thisEvent.rsvps.includes(store.user._id)) {
+  if (!thisEvent.rsvps.includes(store.user)) {
     thisEvent.rsvps.push(store.user)
-    api.updateEvents({ event: thisEvent })
-      .then(console.log)
+    api.updateEvent({
+      event: thisEvent
+    })
+      .then(ui.onRSVPSuccess)
       .catch(console.error)
   } else {
-    $('.status-message').text("You have already RSVP'd!")
+    $('.status-message').text("You're already attending this event.")
     setTimeout(function () {
       $('.status-message').fadeOut()
-    }, 1000)
+    }, 6000)
   }
 }
 
@@ -83,7 +84,7 @@ const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
   $(document).on('submit', '#upload-image', onUploadImage)
-  $(document).on('submit', '#update-event', onUpdateEvents)
+  $(document).on('submit', '#update-event', onUpdateEvent)
   $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.delete-event', onDeleteEvent)
   $(document).on('click', '.event-card', onOpenEvent)
@@ -95,6 +96,6 @@ module.exports = {
   onCreateEvent,
   onGetAllEvents,
   onDeleteEvent,
-  onUpdateEvents,
+  onUpdateEvent,
   addHandlers
 }

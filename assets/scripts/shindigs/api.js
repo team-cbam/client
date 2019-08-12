@@ -25,13 +25,10 @@ const updateImage = imageURL => {
   })
 }
 
-const createEvents = formData => {
-  console.log(formData)
+const createEvent = formData => {
   return $.ajax({
     url: config.apiUrl + '/events',
-    data: {
-      event: formData
-    },
+    data: {event: formData},
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -39,7 +36,7 @@ const createEvents = formData => {
   })
 }
 
-const updateEvents = (formData) => {
+const updateEvent = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/events/' + store.event_id,
     method: 'PATCH',
@@ -49,7 +46,7 @@ const updateEvents = (formData) => {
   })
 }
 
-const getEvents = function () {
+const getAllEvents = function () {
   return $.ajax({
     url: config.apiUrl + '/events',
     method: 'GET'
@@ -61,7 +58,7 @@ const deleteEvent = eventId => {
     url: config.apiUrl + '/events/' + eventId,
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Bearer ' + store.user.token
     }
   })
 }
@@ -72,11 +69,12 @@ const openEvent = id => {
     url: config.apiUrl + `/events/${id}`
   })
 }
+
 module.exports = {
-  createEvents,
-  getEvents,
+  createEvent,
+  getAllEvents,
   deleteEvent,
-  updateEvents,
+  updateEvent,
   openEvent,
   uploadImage,
   updateImage

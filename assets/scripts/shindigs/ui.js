@@ -11,7 +11,9 @@ const uploadImageSuccess = res => {
 }
 
 const getEventsSuccess = (data) => {
-  const showEventsHtml = showEventsTemplate({ events: data.events })
+  const showEventsHtml = showEventsTemplate({
+    events: data.events
+  })
   $('.content').html(showEventsHtml)
   $('form').trigger('reset')
 }
@@ -25,32 +27,49 @@ const getEventsFailure = function (error) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 1000)
+  }, 5000)
 }
 
 const openEventSuccess = data => {
   console.log(data.event)
   store.current_event = data.event
-  const openEventHTML = openedEvent({ event: data.event, user: store.user })
+  const openEventHTML = openedEvent({
+    event: data.event,
+    user: store.user
+  })
   $('.content').html(openEventHTML)
   if (store.user && data.event.owner === store.user._id) {
-    const ownerButtonsHTML = ownerButtons({ event: data.event, editable: true })
+    const ownerButtonsHTML = ownerButtons({
+      event: data.event,
+      editable: true
+    })
     $('.content').append(ownerButtonsHTML)
   }
+  $('.status-message').text('Attending this Event?').show()
+  // setTimeout(function () {
+  //   $('.status-message').fadeOut()
+  // }, 5000)
 }
 
 const clearEvents = () => {
   $('.content').empty()
-  $('.status-message').text('Cleared all the events!')
+  $('.status-message').text('Cleared all the events!').show()
+  // setTimeout(function () {
+  //   $('.status-message').fadeOut()
+  // }, 5000)
 }
 
 const createEventSuccess = (data) => {
   $('#create-event-modal').modal('hide')
   $('.modal-backdrop').hide()
+  $('.status-message').text('You created an event').show()
+  setTimeout(function () {
+    $('.status-message').fadeOut()
+  }, 5000)
 }
 
 const createEventFailure = function (error) {
-  $('.status-message').text('Error on creating a event')
+  $('.status-message').text('Error on creating a event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
@@ -58,17 +77,15 @@ const createEventFailure = function (error) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 1000)
+  }, 5000)
 }
 
 const showEventsSuccess = () => {
-  $('.status-message').removeClass()
-  $('.status-message').addClass('success')
   $('form').trigger('reset')
 }
 
 const showEventsFailure = function (error) {
-  $('.status-message').text('Error on creating a event')
+  $('.status-message').text('Error on creating a event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
@@ -76,18 +93,21 @@ const showEventsFailure = function (error) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 1000)
+  }, 6000)
 }
 
 const updateEventsSuccess = () => {
-  $('.status-message').text('Yay! You changed a event!')
+  $('.status-message').text('Yay! You changed a event!').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('success')
   $('form').trigger('reset')
+  setTimeout(function () {
+    $('.status-message').fadeOut()
+  }, 6000)
 }
 
 const updateEventsFailure = function (error) {
-  $('.status-message').text('Error on creating a event')
+  $('.status-message').text('Error on creating a event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
@@ -95,11 +115,11 @@ const updateEventsFailure = function (error) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 1000)
+  }, 6000)
 }
 
 const deleteEventsFailure = function (error) {
-  $('.status-message').text('Error on deleting a event')
+  $('.status-message').text('Error on deleting a event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
@@ -107,11 +127,26 @@ const deleteEventsFailure = function (error) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 1000)
+  }, 6000)
 }
 
-const failure = () => {
-  $('.status-message').text('An Error Occurred').css('color', 'red')
+const deleteEventSuccess = () => {
+  $('.status-message').text('You deleted an event!').show()
+  setTimeout(function () {
+    $('.status-message').fadeOut()
+  }, 5000)
+  $('form').trigger('reset')
+}
+
+const failure = (error) => {
+  $('.status-message').text('An Error Occurred').css('color', 'red').show()
+}
+
+const onRSVPSuccess = () => {
+  $('.status-message').text("You're attending this event.").show()
+  setTimeout(function () {
+    $('.status-message').fadeOut()
+  }, 6000)
 }
 
 module.exports = {
@@ -127,5 +162,7 @@ module.exports = {
   showEventsSuccess,
   showEventsFailure,
   openEventSuccess,
-  uploadImageSuccess
+  uploadImageSuccess,
+  onRSVPSuccess,
+  deleteEventSuccess
 }
