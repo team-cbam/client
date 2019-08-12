@@ -3,13 +3,15 @@
 const config = require('../config')
 const store = require('../store')
 
-const createEvents = formData => {
+const createEvent = formData => {
+  // for (const [key, value] of formData.entries()) {
+  //   console.log(key, value)
+  // }
+  // console.log(store.user.token)
   console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/events',
-    data: {
-      event: formData
-    },
+    data: {event: formData},
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -17,15 +19,16 @@ const createEvents = formData => {
   })
 }
 
-const updateEvents = (formData, id) => {
+const updateEvent = (formData) => {
+  console.log(formData)
   return $.ajax({
-    url: config.apiUrl + '/events/' + id,
+    url: config.apiUrl + '/events/' + formData.event._id,
     method: 'PATCH',
     data: formData
   })
 }
 
-const getEvents = function () {
+const getAllEvents = function () {
   return $.ajax({
     url: config.apiUrl + '/events',
     method: 'GET'
@@ -37,7 +40,7 @@ const deleteEvent = eventId => {
     url: config.apiUrl + '/events/' + eventId,
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Bearer ' + store.user.token
     }
   })
 }
@@ -48,10 +51,14 @@ const openEvent = id => {
     url: config.apiUrl + `/events/${id}`
   })
 }
+
+
+
+
 module.exports = {
-  createEvents,
-  getEvents,
+  createEvent,
+  getAllEvents,
   deleteEvent,
-  updateEvents,
+  updateEvent,
   openEvent
 }

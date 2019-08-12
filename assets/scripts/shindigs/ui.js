@@ -4,7 +4,9 @@ const ownerButtons = require('../templates/owner-buttons.handlebars')
 const store = require('../store')
 
 const getEventsSuccess = (data) => {
-  const showEventsHtml = showEventsTemplate({ events: data.events })
+  const showEventsHtml = showEventsTemplate({
+    events: data.events
+  })
   $('.content').html(showEventsHtml)
   $('form').trigger('reset')
 }
@@ -23,10 +25,16 @@ const getEventsFailure = function (error) {
 
 const openEventSuccess = data => {
   store.current_event = data.event
-  const openEventHTML = openedEvent({ event: data.event, user: store.user })
+  const openEventHTML = openedEvent({
+    event: data.event,
+    user: store.user
+  })
   $('.content').html(openEventHTML)
   if (store.user && data.event.owner === store.user._id) {
-    const ownerButtonsHTML = ownerButtons({ event: data.event, editable: true })
+    const ownerButtonsHTML = ownerButtons({
+      event: data.event,
+      editable: true
+    })
     $('.content').append(ownerButtonsHTML)
   }
 }
@@ -107,6 +115,13 @@ const failure = (error) => {
   console.error(error)
 }
 
+const onRSVPSuccess = () => {
+  $('.status-message').text("You're attending this event.")
+  setTimeout(function () {
+    $('.status-message').fadeOut()
+  }, 6000)
+}
+
 module.exports = {
   clearEvents,
   failure,
@@ -119,5 +134,6 @@ module.exports = {
   updateEventsFailure,
   showEventsSuccess,
   showEventsFailure,
-  openEventSuccess
+  openEventSuccess,
+  onRSVPSuccess
 }

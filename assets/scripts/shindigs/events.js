@@ -18,7 +18,11 @@ const uploadImage = event => {
 const onCreateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.createEvents(formData)
+  // const formData = new FormData(event.target)
+  // for (const [key, value] of formData.entries()) {
+  //   console.log(key, value)
+  // // }
+  api.createEvent(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
     .catch(ui.createEventFailure)
@@ -34,18 +38,18 @@ const onDeleteEvent = (event) => {
 }
 
 const onGetAllEvents = function (event) {
-  api.getEvents()
+  api.getAllEvents()
     .then(ui.getEventsSuccess)
     .catch(ui.getEventsSuccessFailure)
 }
 
-const onUpdateEvents = event => {
+const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
   const id = event.dataset.id
-  api.updateEvents(formData, id)
-    .then(ui.updateEventsSuccess)
-    .catch(ui.updateEventsSuccessFailure)
+  api.updateEvent(formData, id)
+    .then(ui.updateEventSuccess)
+    .catch(ui.updateEventSuccessFailure)
 }
 
 const onOpenEvent = event => {
@@ -57,17 +61,19 @@ const onOpenEvent = event => {
 
 const onRSVP = event => {
   const thisEvent = store.current_event
-  console.log(thisEvent.rsvps.includes(store.user._id))
-  if (thisEvent.rsvps.includes(store.user._id)) {
+  console.log(thisEvent.rsvps.includes(store.user))
+  if (!thisEvent.rsvps.includes(store.user)) {
     thisEvent.rsvps.push(store.user)
-    api.updateEvents({ event: thisEvent })
-      .then(console.log)
+    api.updateEvent({
+      event: thisEvent
+    })
+      .then(ui.onRSVPSuccess)
       .catch(console.error)
   } else {
-    $('.status-message').text("You have already RSVP'd!")
+    $('.status-message').text("You're already attending this event.")
     setTimeout(function () {
       $('.status-message').fadeOut()
-    }, 1000)
+    }, 6000)
   }
 }
 
@@ -75,18 +81,19 @@ const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
   $(document).on('submit', '#image-input', uploadImage)
-  $(document).on('submit', '#update-event', onUpdateEvents)
+  $(document).on('submit', '#update-event', onUpdateEvent)
   $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.delete-event', onDeleteEvent)
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
   $(document).on('click', '.attending', onRSVP)
+  $(document).on('click', '.see-all-rsvp', onMyRSVP)
 }
 
 module.exports = {
   onCreateEvent,
   onGetAllEvents,
   onDeleteEvent,
-  onUpdateEvents,
+  onUpdateEvent,
   addHandlers
 }
