@@ -17,7 +17,7 @@ const uploadImage = event => {
 
 const onCreateEvent = event => {
   event.preventDefault()
-  const formData = getFormFields(event.target)
+  const formData = new FormData(event.target)
 
   api.createEvents(formData)
     .then(() => onGetAllEvents())
