@@ -18,7 +18,7 @@ const uploadImage = event => {
 const onCreateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.createEvents(formData)
+  api.createEvent(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
     .catch(ui.createEventFailure)
@@ -34,18 +34,18 @@ const onDeleteEvent = (event) => {
 }
 
 const onGetAllEvents = function (event) {
-  api.getEvents()
+  api.getAllEvents()
     .then(ui.getEventsSuccess)
     .catch(ui.getEventsSuccessFailure)
 }
 
-const onUpdateEvents = event => {
+const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
   const id = event.dataset.id
-  api.updateEvents(formData, id)
-    .then(ui.updateEventsSuccess)
-    .catch(ui.updateEventsSuccessFailure)
+  api.updateEvent(formData, id)
+    .then(ui.updateEventSuccess)
+    .catch(ui.updateEventSuccessFailure)
 }
 
 const onOpenEvent = event => {
@@ -57,10 +57,10 @@ const onOpenEvent = event => {
 
 const onRSVP = event => {
   const thisEvent = store.current_event
-  console.log(thisEvent.rsvps.includes(store.user._id))
-  if (thisEvent.rsvps.includes(store.user._id)) {
+  console.log(thisEvent)
+  if (!thisEvent.rsvps.includes(store.user)) {
     thisEvent.rsvps.push(store.user)
-    api.updateEvents({ event: thisEvent })
+    api.updateEvent({ event: thisEvent })
       .then(console.log)
       .catch(console.error)
   } else {
@@ -75,7 +75,7 @@ const addHandlers = () => {
   $(document).on('click', '#see-all-events', onGetAllEvents)
   $(document).on('submit', '#create-event', onCreateEvent)
   $(document).on('submit', '#image-input', uploadImage)
-  $(document).on('submit', '#update-event', onUpdateEvents)
+  $(document).on('submit', '#update-event', onUpdateEvent)
   $(document).on('click', '#delete-event', onDeleteEvent)
   $(document).on('click', '.delete-event', onDeleteEvent)
   $(document).on('click', '.event-card', onOpenEvent)
@@ -87,6 +87,6 @@ module.exports = {
   onCreateEvent,
   onGetAllEvents,
   onDeleteEvent,
-  onUpdateEvents,
+  onUpdateEvent,
   addHandlers
 }
