@@ -5,10 +5,6 @@ const store = require('../store')
 
 const createEvent = formData => {
   // for (const [key, value] of formData.entries()) {
-  //   console.log(key, value)
-  // }
-  // console.log(store.user.token)
-  console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/events',
     data: {event: formData},
@@ -20,7 +16,6 @@ const createEvent = formData => {
 }
 
 const updateEvent = (formData) => {
-  console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/events/' + formData.event._id,
     method: 'PATCH',

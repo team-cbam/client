@@ -8,11 +8,10 @@ const ui = require('./ui')
 
 const uploadImage = event => {
   event.preventDefault()
-  console.log()
   const formData = new FormData(event.target)
-  for (const [key, value] of formData.entries()) {
-    console.log(key, value)
-  }
+  // for (const [key, value] of formData.entries()) {
+  //
+  // }
 }
 
 const onCreateEvent = event => {
@@ -20,7 +19,6 @@ const onCreateEvent = event => {
   const formData = getFormFields(event.target)
   // const formData = new FormData(event.target)
   // for (const [key, value] of formData.entries()) {
-  //   console.log(key, value)
   // // }
   api.createEvent(formData)
     .then(() => onGetAllEvents())
@@ -31,9 +29,9 @@ const onCreateEvent = event => {
 const onDeleteEvent = (event) => {
   event.preventDefault()
   const eventId = event.target.dataset.id
-  console.log(eventId)
   api.deleteEvent(eventId)
     .then(() => onGetAllEvents())
+    .then(ui.deleteEventSuccess)
     .catch(ui.failure)
 }
 
@@ -46,8 +44,8 @@ const onGetAllEvents = function (event) {
 const onUpdateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  const id = event.dataset.id
-  api.updateEvent(formData, id)
+  // const id = event.id
+  api.updateEvent(formData)
     .then(ui.updateEventSuccess)
     .catch(ui.updateEventSuccessFailure)
 }
@@ -61,7 +59,6 @@ const onOpenEvent = event => {
 
 const onRSVP = event => {
   const thisEvent = store.current_event
-  console.log(thisEvent.rsvps.includes(store.user))
   if (!thisEvent.rsvps.includes(store.user)) {
     thisEvent.rsvps.push(store.user)
     api.updateEvent({
@@ -87,7 +84,6 @@ const addHandlers = () => {
   $(document).on('click', '.event-card', onOpenEvent)
   $(document).on('click', '.back-to-events', onGetAllEvents)
   $(document).on('click', '.attending', onRSVP)
-  $(document).on('click', '.see-all-rsvp', onMyRSVP)
 }
 
 module.exports = {
