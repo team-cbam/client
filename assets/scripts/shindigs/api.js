@@ -21,13 +21,12 @@ const createEvents = formData => {
   })
 }
 
-const updateEvents = formData => {
+const updateEvents = (formData) => {
+  const updated = formData.event
+  console.log(formData)
   return $.ajax({
-    url: config.apiUrl + '/events/' + formData.event.id,
+    url: config.apiUrl + '/events/' + updated._id,
     method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
     data: formData
   })
 }
@@ -39,7 +38,7 @@ const getEvents = function () {
   })
 }
 
-const deleteEvents = eventId => {
+const deleteEvent = eventId => {
   return $.ajax({
     url: config.apiUrl + '/events/' + eventId,
     method: 'DELETE',
@@ -58,7 +57,7 @@ const openEvent = id => {
 module.exports = {
   createEvents,
   getEvents,
-  deleteEvents,
+  deleteEvent,
   updateEvents,
   openEvent
 }
