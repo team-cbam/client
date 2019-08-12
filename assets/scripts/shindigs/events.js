@@ -11,11 +11,10 @@ const onUploadImage = event => {
   const formData = new FormData(event.target)
   api.uploadImage(formData)
     .then((res) => {
-      api.updateImage(res.imageUpload.url)
-      return res
+      return api.updateImage(res.imageUpload.url)
     })
-    .then(() => {
-      onOpenEvent(event)
+    .then((res) => {
+      ui.openEventSuccess(event)
     })
     .then(ui.uploadImageSuccess)
     .catch(ui.failure)
