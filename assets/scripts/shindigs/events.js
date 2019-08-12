@@ -17,8 +17,7 @@ const uploadImage = event => {
 
 const onCreateEvent = event => {
   event.preventDefault()
-  const formData = new FormData(event.target)
-
+  const formData = getFormFields(event.target)
   api.createEvents(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
@@ -58,8 +57,8 @@ const onOpenEvent = event => {
 
 const onRSVP = event => {
   const thisEvent = store.current_event
-  console.log(thisEvent.rsvps.includes(store.user))
-  if (thisEvent.rsvps.includes(store.user)) {
+  console.log(thisEvent.rsvps.includes(store.user._id))
+  if (thisEvent.rsvps.includes(store.user._id)) {
     thisEvent.rsvps.push(store.user)
     api.updateEvents({ event: thisEvent })
       .then(console.log)
