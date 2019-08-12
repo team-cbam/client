@@ -14,7 +14,7 @@ const onUploadImage = event => {
       return api.updateImage(res.imageUpload.url)
     })
     .then((res) => {
-      ui.openEventSuccess(event)
+      ui.openEventSuccess(res)
     })
     .then(ui.uploadImageSuccess)
     .catch(ui.failure)
@@ -23,9 +23,6 @@ const onUploadImage = event => {
 const onCreateEvent = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  // const formData = new FormData(event.target)
-  // for (const [key, value] of formData.entries()) {
-  // // }
   api.createEvent(formData)
     .then(() => onGetAllEvents())
     .then(ui.createEventSuccess)
@@ -58,6 +55,10 @@ const onUpdateEvent = event => {
 const onOpenEvent = event => {
   event.preventDefault()
   api.openEvent(event.target.dataset.id)
+    .then(event => {
+      ui.openEventSuccess(event)
+      return event
+    })
     .then(ui.openEventSuccess)
     .catch(ui.failure)
 }
