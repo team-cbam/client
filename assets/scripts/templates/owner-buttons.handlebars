@@ -20,9 +20,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id='upload-image' enctype="multipart/form-data">
+        <form id='upload-image' data-id="{{event._id}}" enctype="multipart/form-data">
           <input type="file" name="file">
-          <button class="btn btn-primary" data-id="{{event._id}}">Upload File</button>
+          <button class="btn btn-primary">Upload File</button>
         </form>
       </div>
     </div>
