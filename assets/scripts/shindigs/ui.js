@@ -55,7 +55,6 @@ const createEventSuccess = (data) => {
   $('#create-event-modal').modal('hide')
   $('.modal-backdrop').hide()
   $('.status-message').text('You created an event')
-  console.log('Yay!')
   setTimeout(function () {
     $('.status-message').fadeOut()
   }, 5000)
