@@ -105,6 +105,8 @@ const updateEventsSuccess = () => {
   setTimeout(function () {
     $('.status-message').fadeOut()
   }, 6000)
+  $('#update-event-modal').modal('hide')
+  $('.modal-backdrop').hide()
 }
 
 const updateEventsFailure = function (data) {
