@@ -10,7 +10,7 @@ const uploadImageSuccess = res => {
   $('form').trigger('reset')
   setTimeout(function () {
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 const getEventsSuccess = (data) => {
@@ -30,7 +30,7 @@ const getEventsFailure = function (data) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 const openEventSuccess = data => {
@@ -50,7 +50,7 @@ const openEventSuccess = data => {
   // $('.status-message').text('Attending this Event?').show()
   // setTimeout(function () {
   //   $('.status-message').fadeOut()
-  // }, 2000)
+  // }, 3000)
 }
 
 const clearEvents = () => {
@@ -58,7 +58,7 @@ const clearEvents = () => {
   $('.status-message').text('Cleared all the events!').show()
   // setTimeout(function () {
   //   $('.status-message').fadeOut()
-  // }, 2000)
+  // }, 3000)
 }
 
 const createEventSuccess = (data) => {
@@ -67,19 +67,20 @@ const createEventSuccess = (data) => {
   $('.status-message').text('You created an event').show()
   setTimeout(function () {
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 const createEventFailure = function (data) {
-  $('.status-message').text('Error on creating a event').show()
+  $('.status-message').text('Error on creating an event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
-  // console.data('did not create any events', data)
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
+  $('#create-event-modal').modal('hide')
+  $('.modal-backdrop').hide()
 }
 
 const showEventsSuccess = () => {
@@ -87,22 +88,21 @@ const showEventsSuccess = () => {
 }
 
 const showEventsFailure = function (data) {
-  $('.status-message').text('Error on creating a event').show()
+  $('.status-message').text('Error on creating an event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
-  // console.data('did not create any events', data)
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 const updateEventsSuccess = () => {
-  $('.status-message').text('Yay! You changed a event!').show()
+  $('.status-message').text('Yay! You changed an event!').show()
   setTimeout(function () {
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
   $('.status-message').addClass('success')
   $('form').trigger('reset')
   $('#update-event-modal').modal('hide')
@@ -110,7 +110,7 @@ const updateEventsSuccess = () => {
 }
 
 const updateEventsFailure = function (data) {
-  $('.status-message').text('Error on creating a event').show()
+  $('.status-message').text('Error on creating an event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
@@ -118,7 +118,9 @@ const updateEventsFailure = function (data) {
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
+  $('#update-event-modal').modal('hide')
+  $('.modal-backdrop').hide()
 }
 
 const deleteEventsFailure = function (data) {
@@ -126,22 +128,23 @@ const deleteEventsFailure = function (data) {
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
-  // console.data('did not delete any events', data)
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 const deleteEventSuccess = () => {
   $('.status-message').text('You deleted an event!').show()
   setTimeout(function () {
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
   $('form').trigger('reset')
 }
 
 const failure = (data) => {
+  $('modal').modal('hide')
+  $('.modal-backdrop').hide()
   $('.status-message').text('An Error Occurred').css('color', 'red').show()
   // console.data('Error!', data)
 }
@@ -150,14 +153,14 @@ const onRSVPSuccess = () => {
   $('.status-message').text("You're attending this event.").show()
   setTimeout(function () {
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 const onRSVPFail = () => {
   $('.status-message').text("Sorry, we couldn't process your RSVP. Try again.").show()
   setTimeout(function () {
     $('.status-message').fadeOut()
-  }, 2000)
+  }, 3000)
 }
 
 module.exports = {
