@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Eat Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+
+  <div class="wrapper row">
+
+    <!-- Content body -->
+    <section class="container all-events col-8 p-0">
+      <div class="row flex-column header align-content-center m-4">
+        <h1>Eat Up!</h1>
+      </div>
+      <div class="row flex-column header align-content-center">
+        <p class="status-message"></p>
+      </div>
+
+      <div class="content">
+      </div>
+    </section>
+
+    <!-- auth sidebar -->
+    <section class="container auth col-4 p-2">
+      <div class="row flex-column align-items-center">
+        <!-- Welcome message -->
+        <div>
+          <h1>Welcome!</h1>
+        </div>
+
+        <div class="row">
+          <div class="auth-message"></div>
+        </div>
+
+        <div class="row flex-column sidebar p-4">
+          <!-- Sign in screen -->
+          <div class="sign-in-screen signed-out justify-content-center flex-column">
+            <h4 class="p-2">Sign In</h4>
+            <form id="sign-in" class="p-2">
+              <input class="form-control" type="email" placeholder="Email" name="credentials[email]">
+              <input class="form-control" type="password" placeholder="Password" name="credentials[password]">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <a class='sign-up-link' href="#">New to Eat up? Create an account here.</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Change password modal -->
+  <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <form class="dropdown-item" id="change-password">
+            <div class="modal-body">
+            <p class='password-message'></p>
+            <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
+            <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
