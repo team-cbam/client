@@ -80,11 +80,12 @@ const changePasswordSuccess = data => {
   }, 2000)
   $('form').trigger('reset')
   $('.dropdown-toggle').dropdown('hide')
-  // $('#change-password-modal').modal('hide')
+  $('#change-password-modal').modal('hide')
+  $('.modal-backdrop').hide()
 }
 
 const changePasswordFailure = data => {
-  $('.password-message').html('<p>Sorry, we were unable to change your password</p>')
+  $('.auth-message').html('<p>Sorry, we were unable to change your password</p>')
   $('.auth-message').show()
   setTimeout(function () {
     $('.auth-message').fadeOut()
