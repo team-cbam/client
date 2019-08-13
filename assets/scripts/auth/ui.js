@@ -84,7 +84,7 @@ const changePasswordSuccess = data => {
 }
 
 const changePasswordFailure = data => {
-  $('.auth-message').html('<p>Sorry, we were unable to change your password</p>')
+  $('.password-message').html('<p>Sorry, we were unable to change your password</p>')
   $('.auth-message').show()
   setTimeout(function () {
     $('.auth-message').fadeOut()
