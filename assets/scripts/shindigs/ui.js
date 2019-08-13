@@ -122,7 +122,7 @@ const updateEventsFailure = function (data) {
 }
 
 const deleteEventsFailure = function (data) {
-  $('.status-message').text('Error on deleting a event').show()
+  $('.status-message').text('Error on deleting an event').show()
   $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
@@ -154,7 +154,7 @@ const onRSVPSuccess = () => {
 }
 
 const onRSVPFail = () => {
-  $('.status-message').text("Sorry, we couldn'y process your RSVP. Try again.").show()
+  $('.status-message').text("Sorry, we couldn't process your RSVP. Try again.").show()
   setTimeout(function () {
     $('.status-message').fadeOut()
   }, 2000)
