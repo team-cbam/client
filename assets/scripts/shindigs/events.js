@@ -71,9 +71,9 @@ const onRSVP = event => {
       event: thisEvent
     })
       .then(ui.onRSVPSuccess)
-      .catch(ui.onRSVPFail)
+      .catch(console.error)
   } else {
-    $('.status-message').text("You're already attending this event.").show()
+    $('.status-message').text("You're already attending this event.")
     setTimeout(function () {
       $('.status-message').fadeOut()
     }, 6000)
