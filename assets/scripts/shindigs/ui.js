@@ -110,7 +110,6 @@ const updateEventsFailure = function (data) {
   $('.status-message').text('Error on creating an event').show()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
-  // console.data('did not create any events', data)
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
