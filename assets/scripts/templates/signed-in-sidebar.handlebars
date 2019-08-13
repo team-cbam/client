@@ -3,14 +3,11 @@
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Account
   </button>
+
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <form class="dropdown-item" id="change-password">
-      <label class="col-form-label">Change Password</label>
-      <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
-      <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
-      <button class="btn btn-primary" type="submit">Submit</button>
-      <button id="sign-out" class="form-control btn btn-primary dropdown-item" type="button">Sign Out</button>
-  </form>
+    <button class="form-control btn btn-primary dropdown-item" data-toggle="modal" data-target="#change-password-modal" type="button">Change Password</button>
+    <button id="sign-out" class="form-control btn btn-primary dropdown-item" type="button">Sign Out</button>
+
   </div>
 </div>
 

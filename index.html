@@ -57,6 +57,31 @@
       </div>
     </section>
   </div>
+  <!-- Change password modal -->
+  <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <form class="dropdown-item" id="change-password">
+            <div class="modal-body">
+            <p class='password-message'></p>
+            <input class="form-control" type="password" placeholder="Old Password" name="passwords[old]">
+            <input class="form-control" type="password" placeholder="New Password" name="passwords[new]">
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

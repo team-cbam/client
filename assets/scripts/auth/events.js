@@ -40,6 +40,8 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
+const resetChangePasswordForm = () => $('#change-password').trigger('reset')
+
 const addHandlers = () => {
   $(document).on('submit', '#sign-up', onSignUp)
   $(document).on('submit', '#sign-in', onSignIn)
@@ -47,9 +49,7 @@ const addHandlers = () => {
   $(document).on('click', '#sign-out', onSignOut)
   $(document).on('click', '.sign-up-link', ui.showSignUp)
   $(document).on('click', '.sign-in-link', ui.showSignIn)
-  $(document).ready(function () {
-    $('#dropdownMenuButton').on('click', () => $('form').trigger('reset'))
-  })
+  $(document).on('click', '.dropdown-item', resetChangePasswordForm)
 }
 
 module.exports = {
