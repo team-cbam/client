@@ -23,7 +23,6 @@ const getEventsSuccess = (data) => {
 
 const getEventsFailure = function (data) {
   $('.status-message').text('Error on getting events')
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   // console.data('did not get any events', data)
