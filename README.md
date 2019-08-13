@@ -56,3 +56,5 @@ The team met together to discuss our project and broke it down into the major el
 After lunch we did another stand up and our second sprint planning to determie what tickets were still in progress and what was next in the queue to complete in order to achieve MVP.  Any problems encountered were first researched by the developer facing it, and then discussed among the group as an escalation. If we weren't able to solve the issue via quorum, it went to the issue queue.
 
 Problems in process or with the group were otherwise highlighted in the sprints retrospective and addressed by the scrum master.
+
+In future iterations we will make it so the a user can upload an image. Currently the functionality of the button causes the page to freeze, so it was removed until it can be repaired.
