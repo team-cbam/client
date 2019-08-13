@@ -97,7 +97,9 @@ const showEventsFailure = function (error) {
 
 const updateEventsSuccess = () => {
   $('.status-message').text('Yay! You changed a event!').show()
-  $('.status-message').removeClass()
+  setTimeout(function () {
+    $('.status-message').fadeOut()
+  }, 2000)
   $('.status-message').addClass('success')
   $('form').trigger('reset')
   setTimeout(function () {
