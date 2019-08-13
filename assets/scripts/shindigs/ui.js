@@ -121,7 +121,6 @@ const updateEventsFailure = function (data) {
 
 const deleteEventsFailure = function (data) {
   $('.status-message').text('Error on deleting an event').show()
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   setTimeout(function () {
