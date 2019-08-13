@@ -23,7 +23,6 @@ const getEventsSuccess = (data) => {
 
 const getEventsFailure = function (data) {
   $('.status-message').text('Error on getting events')
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   // console.data('did not get any events', data)
@@ -72,15 +71,14 @@ const createEventSuccess = (data) => {
 
 const createEventFailure = function (data) {
   $('.status-message').text('Error on creating an event').show()
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
+  $('#create-event-modal').modal('hide')
+  $('.modal-backdrop').hide()
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
   }, 3000)
-  $('#create-event-modal').modal('hide')
-  $('.modal-backdrop').hide()
 }
 
 const showEventsSuccess = () => {
@@ -89,7 +87,6 @@ const showEventsSuccess = () => {
 
 const showEventsFailure = function (data) {
   $('.status-message').text('Error on creating an event').show()
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   setTimeout(function () {
@@ -111,7 +108,6 @@ const updateEventsSuccess = () => {
 
 const updateEventsFailure = function (data) {
   $('.status-message').text('Error on creating an event').show()
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   // console.data('did not create any events', data)
@@ -125,7 +121,6 @@ const updateEventsFailure = function (data) {
 
 const deleteEventsFailure = function (data) {
   $('.status-message').text('Error on deleting an event').show()
-  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   setTimeout(function () {
