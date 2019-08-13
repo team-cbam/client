@@ -47,6 +47,9 @@ const addHandlers = () => {
   $(document).on('click', '#sign-out', onSignOut)
   $(document).on('click', '.sign-up-link', ui.showSignUp)
   $(document).on('click', '.sign-in-link', ui.showSignIn)
+  $(document).ready(function () {
+    $('#dropdownMenuButton').on('click', () => $('form').trigger('reset'))
+  })
 }
 
 module.exports = {
