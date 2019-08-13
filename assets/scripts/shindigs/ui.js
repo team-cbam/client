@@ -23,6 +23,7 @@ const getEventsSuccess = (data) => {
 
 const getEventsFailure = function (data) {
   $('.status-message').text('Error on getting events')
+  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   // console.data('did not get any events', data)
@@ -110,7 +111,6 @@ const updateEventsFailure = function (data) {
   $('.status-message').text('Error on creating an event').show()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
-  // console.data('did not create any events', data)
   setTimeout(function () {
     $('.status-message').removeClass('failure')
     $('.status-message').fadeOut()
@@ -121,6 +121,7 @@ const updateEventsFailure = function (data) {
 
 const deleteEventsFailure = function (data) {
   $('.status-message').text('Error on deleting an event').show()
+  $('.status-message').removeClass()
   $('.status-message').addClass('failure')
   $('form').trigger('reset')
   setTimeout(function () {
